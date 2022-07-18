@@ -2,6 +2,11 @@
 
 
 session_start();
+
+$connection = mysqli_connect("localhost", "root", "mysql", "lib");
+
+include("logwork.php");
+include("checkses.php");
 if(!isset($_SESSION['search'])){
     header("Location:index.php");
 }else{
@@ -40,8 +45,19 @@ if($search and mysqli_num_rows($search)<1){
  font-size:19px;
  margin-left:5%;
  color:#ffffff;
+ margin-top: 0;
+ margin-bottom: 0;
 }
 
+
+.head1{
+ font-weight:700;
+ font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;
+ font-size:19px;
+ margin-left:5%;
+ margin-top: 0;
+ padding-top: 19px;
+}
 /* Heading */
  h1{
  font-size:27px;
@@ -62,73 +78,102 @@ if($search and mysqli_num_rows($search)<1){
  padding-left:10%;
 }
 
-/* Body */
-body{
- background-color:#080f2f;
- margin-left:0px;
- margin-right:0px;
- margin-top:0px;
- margin-bottom:0px;
+.back{
+color: white;
+
 }
-
-/* List */
-ul{
- width:100% !important;
- padding-left:0px;
-}
-
-
-/* Link */
-.head a{
- text-decoration:underline;
- color:#00f4e8;
- font-weight:500;
- font-size:16px;
-}
-
-/* Link (hover) */
-.head a:hover{
- color:#c7f400;
-}
-/* Link */
-.result li a{
- position:relative;
- left:18%;
- font-size:1em;
- font-family:'Arial Black','Arial Bold',Gadget,sans-serif;
- color:#1c870c;
-}
-
-.result li a:hover{color:#c7f400}
-
-
-
+.shead{background-color:#025859; }
 </style>
 
 
 
 <body>
+<div style="width: 100%; background-color:#025859">
 <p class="head">
-<a href="index.php" class="back">Go back</a></p>
-<p class="head">Search results(<?php echo mysqli_num_rows($search) ?>)</p>
-<br>
+<a href="index.php" class="back" >Go back</a></p>
+</div>
+<table width="100%">
+<?php
+
+include("header.php");
+
+?>
+
+</table>
+<hr style="color:black" >
+<div class="shead">
+<p class="head1">Search results(<?php echo mysqli_num_rows($search) ?>)</p>
+<br></div>
 <?php echo $nores; ?>
-<ul>
+<table width="100%">
+    <tr>
+        <th>Bookid</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Type</th>
+        <th>Category</th>
+        <th>Classification</th>
+        <th>Course</th>
+        <th>Department</th>
+        <th>Year of publication</th>
+        <th>Description</th>
+
+
+
+    </tr>
 <?php while($getdata3=mysqli_fetch_array($search)){ ?>
 
-    <div class="result"><li>
-<h1>Title:<?php  echo $getdata3['title'] ?></h1>
-<h2>Author:<?php  echo $getdata3['author'] ?></h2>
-<p>Description:<?php  echo $getdata3['description'] ?></p>
+    <tr class="result">
+        <td>
+        <?php  echo $getdata3['contentid'] ?>
 
-<p>Type:<?php $typeid=$getdata3['typeid'];
+        </td>
+<td><?php  echo $getdata3['title'] ?></td>
+<td><?php  echo $getdata3['author'] ?></td>
+
+
+
+
+
+<td><?php $typeid=$getdata3['typeid'];
 $gettype=mysqli_query($connection,"select * from lib.restype where typeid='$typeid'");
 $type=mysqli_fetch_assoc($gettype); echo $type['type'];
-?></p>
-<a class="view" href="upload\<?php  echo $getdata3['link'] ?>">View</a>
-</li>  </div>
+?></td>
+
+<td><?php $catid=$getdata3['catid'];
+$getcat=mysqli_query($connection,"select * from lib.cate where catid='$catid'");
+$cat=mysqli_fetch_assoc($getcat); echo $cat['category'];
+?></td>
+
+
+<td><?php $classid=$getdata3['classid'];
+$getclass=mysqli_query($connection,"select * from lib.class where classid='$classid'");
+$class=mysqli_fetch_assoc($getclass); echo $class['class'];
+?></td>
+
+
+<td><?php $courseid=$getdata3['courseid'];
+$getcourse=mysqli_query($connection,"select * from lib.courses where courseid='$courseid'");
+$course=mysqli_fetch_assoc($getcourse); echo $course['coursename'];
+?></td>
+
+<td><?php $deptid=$getdata3['deptid'];
+$getdep=mysqli_query($connection,"select * from lib.dept where deptid='$deptid'");
+$dept=mysqli_fetch_assoc($getdep); echo $dept['deptname'];
+?></td>
+
+
+<td><?php  echo $getdata3['yearofpub'] ?></td>
+
+
+<td><?php  echo $getdata3['description'] ?></td>
+<td>
+<?php echo $reqm; ?>
+</td>
+
+</tr>
 <?php }?>
-</ul>
+</table>
 
 
 
