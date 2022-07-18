@@ -13,11 +13,13 @@ if(isset($_SESSION['user'])){
 
 
 }
-
+include("auth.php");
 include("logwork.php");
 include("checkses.php");
 
-
+if(isset($_SESSION['user'])){
+    header("Location:req.php");
+}
 
 
 
@@ -49,50 +51,65 @@ include("header.php");
     </table>
     <hr style="color:black" >
 
+    <p class="mmm" id="mmm" style="text-align: center"><?php echo $signerr;?></p>
+    <p style="text-align: center"><?php echo $mssg;?></p>
 
     <h1 align="center">Sign up</h1>
 
-
+    <br><center>
+<?php echo $gob; ?>
+</center>
+   
     <br>
 
     <div id="aaaa">
 
-    <div id="bbbb">
-
-<form method="POST" name="cc">
-    <div id="nam">
-<label for="fname">First name:<br></label><input type="text" name="fname" id="fname" placeholder="Enter your Firstname" required >
-<label for="sname">Sur name:<br></label><input type="text" name="surname" id="sname" placeholder="Enter your Surname" required >
+    <div id="bbbc">
   
-
-</div> 
-
-<br>
-    <br>
-<div id="cont">
-
-
-<label for="phone">Phone Number:<br></label><input type="text" name="phone" id="phone" placeholder="e.g 07012345678" required >
-<label for="email">E-mail:<br></label><input type="email" name="email" id="email" placeholder="Enter your email address" required >
-  
+       
+<form method="POST" >
+<div class="table" >
+<div class="tr">
+    <div class="td">
+<label for="fname">First name:<br></label><input type="text" name="fname" id="fname" placeholder="Enter your Firstname" value="<?php echo $re1; ?>" required >
+    </div><div class="td">
+<label for="sname">Sur name:<br></label><input type="text" name="surname" id="sname" placeholder="Enter your Surname" value="<?php echo $re2; ?>" required >
+  </div>
 
 
 
 </div>
+    <br>
+    
 
-<div id="cho">
+  
+<div class="tr">
+    <div class="td">
+<label for="phone">Phone Number:<br></label><input type="text" name="phone" id="phone" placeholder="e.g 07012345678" value="<?php echo $re3; ?>" required >
+    </div> <div class="td">
+<label for="email">E-mail:<br></label><input type="email" name="email" id="email" placeholder="Enter your email address" value="<?php echo $re4; ?>" required >
+</div>
+
+
+
+</div>
+<br>  
+<div class="tr">
+    <div class="td">
 
     <label for="pin">Choose PIN:<br></label><input type="password" name="pin" id="pin"  placeholder="Choose a pin" required >
-    <label for="pinn">Confirm PIN:<br></label><input type="password" name="pinn" id="pinn"  placeholder="Re-enter pin" required >
-   
+    </div><div class="td"> <label for="pinn">Confirm PIN:<br></label><input type="password" name="pinn" id="pinn"  placeholder="Re-enter pin" required >
+</div>
     
-</div> 
+</div>
     <br>
-    <br>
-    <input type="submit" name="login" class="login" value="Login">
-    <br>
-    <br>
+    <br><div class="tr">
+    <div class="td">
 
+    <input type="submit" name="sign" class="sign" value="Sign up"></div></div>
+    <br>
+    <br>
+</div>
 </form>
 
     </div>

@@ -19,6 +19,9 @@ include("checkses.php");
 
 
 
+if(isset($_SESSION['user'])){
+    header("Location:req.php");
+}
 
 
 
@@ -52,16 +55,17 @@ include("header.php");
 
     <h1 align="center">Please log in to continue</h1>
 
-<br>
+<br><center>
 <a href="res.php">Go back to search results</a>
-
+</center>
     <br>
 
     <div id="aaaa">
 
     <div id="bbbb">
-
+    <div class="looo">
 <form method="POST">
+  
 <label for="id">Library card no.:<br></label><input type="text" name="id" id="id" class="idk" placeholder="Enter your library number" required >
     <br>
     <br>
@@ -76,8 +80,9 @@ include("header.php");
 <br>
 <a href="signup.php">GET A LIBRARY CARD</a>
 </center>
+   
 </form>
-
+</div>
     </div>
 
 

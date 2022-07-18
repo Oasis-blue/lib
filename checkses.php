@@ -78,13 +78,25 @@ if(!isset($_SESSION['admin'])){
 
     $reqm='<a class="view" href="upload\ '.$getdata3['link'].' target="_blank">View</a>';
 $userlog="";
+$getlibcard="";
+    }else{
+
+      $getlibcard=' <li><a href="signup.php" class="navlink">GET A LIBRARY CARD</a></li>';
     }
     
     if(isset($_SESSION['user'])){$adlog="";
       $logout='<a class="flink"  href="logout.php">LOG OUT</a>';
-      $reqm='<a class="view" href="req.php">Request</a>';
-      }
+      $getlibcard="";
+      //$reqm="";
+      }else{
   $reqm='<a class="view" href="log.php">Request</a>
-';    
+';   $getlibcard=' <li><a href="signup.php" class="navlink">GET A LIBRARY CARD</a></li>';
+      }
+      if(isset($_SESSION['search'])){
+$gob='<a href="res.php">Go back to search results</a>';
+      }else{
+      $gob=  '<a href="index.php">Go back</a>';
+
+      }
 
 ?>

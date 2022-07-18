@@ -1,5 +1,69 @@
 
 <style>
+
+/* Label */
+.table .tr label{
+ font-weight:600;
+ font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;
+}
+
+/* Fname */
+#fname{
+ height:2em; font-size:16px;
+}
+
+/* Sname */
+#sname{
+ height:2em; font-size:16px;
+}
+
+/* Phone */
+#phone{
+ height:2em; font-size:16px;
+}
+
+/* Email */
+#email{
+ height:2em;
+ font-size:16px;
+}
+
+/* Pin */
+#pin{
+ height:2em; font-size:16px;
+}
+
+/* Pinn */
+#pinn{
+ height:2em; font-size:16px;
+}
+
+/* Sign */
+.table .tr .sign{
+ background-color:rgba(23,86,246,0.85);
+ border-style:none;
+ font-size:16px;
+ padding-left:10px;
+ padding-right:10px;
+ padding-top:4px;
+ padding-bottom:4px;
+ border-top-left-radius:5px;
+ border-top-right-radius:5px;
+ border-bottom-left-radius:5px;
+ border-bottom-right-radius:5px;
+ color:#f2f1f1;
+}
+
+/* Sign (hover) */
+.table .tr .sign:hover{
+ background-color:#053dcb;
+ cursor: pointer;
+}
+
+
+
+
+
 .mmm{color: red;}
 .cls:hover,.cls:focus{font-size: 2vw; cursor: pointer;}
   body {
@@ -35,6 +99,29 @@
  justify-content:center;
  align-items:center;
 }
+#bbbc{
+
+ height:50vh;
+ background-color:#f1eeee;
+ box-shadow:0px 0px 17px 3px #9a9292;
+}
+/* Division */
+.tr{
+ display:flex;
+ align-content:normal;
+ justify-content:space-around;
+ column-gap:65px;
+}
+
+/* Division */
+
+/* Bbbc */
+#bbbc{
+ display:flex;
+ justify-content:center;
+ align-items:center;
+}
+
 
 /* Bbbb */
 #bbbb{
@@ -71,7 +158,7 @@
 
 
 /* Form Division */
-#aaaa #bbbb form{
+#aaaa #bbbb .looo{
  width:79% !important;
 }
 
@@ -316,9 +403,17 @@
     height: 2em;
   }
 
+/* Fooo */
+
+/* Bbbb */
+#bbbc{
+ width:45% !important;
+}
+
+
   /* Form Division */
-  .dropdown2 form {
-    height: 189px;
+  .dropdown2  .looo {
+    height: 95%;
     position: relative;
     top: 2em;
   }
@@ -478,7 +573,23 @@
   }
 
 </script>
+<script>
 
+
+var mmm=document.getElementById("mmm");
+
+
+
+var cls=document.getElementsByClassName("cls")[0];
+
+
+cls.onclick=function(){mmm.style.display="none";}
+window.onclick=function(event){if(event.target ==modal){mmm.style.display="none";}}
+
+
+
+
+  </script>
 
 <tr height="5%" class="one">
       <td>
@@ -542,7 +653,7 @@
 
 
 
-            <li><a href="" class="navlink">GET A LIBRARY CARD</a></li>
+           <?php echo $getlibcard; ?>
 
 
             <li>
@@ -597,4 +708,4 @@
 
     </tr>
 
- 
+    <p class="mmm" id="mmm" style="text-align: center"><?php echo $err;?></p>

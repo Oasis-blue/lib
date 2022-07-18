@@ -77,25 +77,9 @@ if ($_POST['seek'] != "") {
 </head>
 
 
-<script>
 
-
-var mmm=document.getElementById("mmm");
-
-
-
-var cls=document.getElementsByClassName("cls")[0];
-
-
-cls.onclick=function(){mmm.style.display="none";}
-window.onclick=function(event){if(event.target ==modal){mmm.style.display="none";}}
-
-
-
-
-  </script>
 <body>
-<p class="mmm" id="mmm" style="text-align: center"><?php echo $err;?></p>
+
   <table width="100%" class="tabb">
 
 

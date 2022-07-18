@@ -168,7 +168,17 @@ $dept=mysqli_fetch_assoc($getdep); echo $dept['deptname'];
 
 <td><?php  echo $getdata3['description'] ?></td>
 <td>
-<?php echo $reqm; ?>
+<?php $cid=$getdata3["contentid"]; $reqm='<a class="view" href="req.php?rssn='.$cid.'"'.">Request</a>"
+
+;
+
+
+
+if(!isset($_SESSION['user'])){
+$reqm='<a class="view" href="log.php">Request</a>
+';  
+}
+echo $reqm; ?>
 </td>
 
 </tr>
