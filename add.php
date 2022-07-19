@@ -126,7 +126,10 @@ if(mysqli_num_rows($checktag3)<1){
     <title>Add a book</title>
 </head>
 <style>
-
+.hl{
+ background-image:url("https://images.unsplash.com/photo-1658222075223-c24006eb133a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTc5fDB8MXxhbGx8MTV8fHx8fHwyfHwxNjU4MjY1OTk5&ixlib=rb-1.2.1&q=80&w=2560");
+ background-size:cover;
+}
 /* Body */
 body{
 
@@ -207,8 +210,11 @@ form input[type=file]{
 
 
 </style>
+<?php
+include("resolu.php");
 
 
+?>
 <body>
 <table width="100%" class="tabbb">
 <?php

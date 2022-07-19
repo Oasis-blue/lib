@@ -113,7 +113,16 @@ include("resolution.php");
 
 ?>
 </head>
+<style>
 
+body{
+ background-image:url("pho.jpg");
+ background-size:contain;
+ backdrop-filter:blur(6.07px);
+}
+
+
+</style>
 
 
 <body>

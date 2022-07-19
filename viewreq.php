@@ -25,6 +25,13 @@ $bottom1='<a class="flink" href=""><b>Pending Requests('.$count.')</b></a>';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Requests</title>
 </head>
+<?php
+include("resolu.php");
+
+
+?>
+
+
 <body>
    
 <table width="100%">

@@ -25,6 +25,12 @@ if(mysqli_num_rows($checkres)<1){$disc="you have no requests at the moment";}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My requests</title>
 </head>
+<?php
+include("resolu.php");
+
+
+?>
+
 <body>
     
 

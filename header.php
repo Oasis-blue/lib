@@ -2,6 +2,32 @@
 <style>
 
 
+
+/* Paragraph */
+center form p{
+ background-image:url("https://images.unsplash.com/photo-1567473030492-533b30c5494c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTc5fDB8MXxzZWFyY2h8Mnx8c2VuZHxlbnwwfHx8fDE2NTgyNjYwMzM&ixlib=rb-1.2.1&q=80&w=2560");
+ background-position-y:47%;
+ background-size:cover;
+ color:rgb(0, 0, 0);
+ background-attachment:scroll;
+}
+
+/* Doit */
+.doit{
+ background-color:rgba(240,239,239,0.71);
+}
+
+/* Paragraph */
+.shead p{
+ color:#ffffff;
+}
+
+
+
+
+
+
+
 /* Import Google Fonts */
 @import url("//fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
 
@@ -242,7 +268,7 @@ center .nm .sugg:hover{
 
 
   .bod {
-    background-image: url("ph.jpg");
+    background-image: url("photo.jpg");
     background-size: cover;
 
   }
@@ -255,7 +281,7 @@ center .nm .sugg:hover{
 }
 #bbbc{
 
- height:50vh;
+
  background-color:#f1eeee;
  box-shadow:0px 0px 17px 3px #9a9292;
 }

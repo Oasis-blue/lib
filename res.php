@@ -74,6 +74,15 @@ if($search and mysqli_num_rows($search)<1){
     <title>Search results</title>
 </head>
 <style>
+
+
+/* Division */
+body div:nth-child(8){
+ background-image:url("https://images.unsplash.com/photo-1494809610410-160faaed4de0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTc5fDB8MXxzZWFyY2h8MXx8ZSUyMGxpYnJhcnl8ZW58MHx8fHwxNjU4MjY3MzI0&ixlib=rb-1.2.1&q=80&w=2560");
+ background-size:cover;
+}
+
+
 /* Head */
 .head{
  font-weight:700;
@@ -121,7 +130,11 @@ color: white;
 .shead{background-color:#025859; }
 </style>
 
+<?php
+include("resolu.php");
 
+
+?>
 
 <body>
 <div style="width: 100%; background-color:#025859">

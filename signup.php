@@ -38,6 +38,19 @@ if(isset($_SESSION['user'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>/* Body */
+body{
+ background-image:url("https://images.unsplash.com/photo-1516979187457-637abb4f9353?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTc5fDB8MXxzZWFyY2h8M3x8ZSUyMGxpYnJhcnl8ZW58MHx8fHwxNjU4MjY3MzI0&ixlib=rb-1.2.1&q=80&w=2560");
+ background-size:cover;
+}
+
+</style>
+<?php
+include("resolu.php");
+
+
+?>
+
 <body>
     <table width="100%" class="tabbb">
         <?php
@@ -128,6 +141,6 @@ include("header.php");
 
 
     </div>
-
+    <div style="min-height: 40vh ;"></div>
 </body>
 </html>

@@ -78,7 +78,20 @@ if($sendreq==1){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Request </title>
+
+    <style>/* Body */
+body{
+    background-color:rgba(250,249,249,0.89);}
+
+</style>
 </head>
+
+<?php
+include("resolu.php");
+
+
+?>
+
 <body>
 <table width="100%" class="tabbb">
 <?php
@@ -149,6 +162,6 @@ include("header.php");
 <br>
 <br>
 <br>
-<div style="min-height: 50vh; background-color: #025859;"></div>
+<div style="min-height: 50vh; "></div>
 </body>
 </html>
