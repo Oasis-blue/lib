@@ -48,14 +48,47 @@ if ($_POST['seek'] != "") {
     $year = "";
   } else {
     $yearr = $_POST['year'];
-    $year = "and year='$yearr'";
+    $year = "and yearofpub='$yearr'";
   }
 
 
 
   $search = "select * from lib.content where $by like '$needle' $fac $dep $year ";
 
+if( $fac == ""){
+ $ffff="All faculties";
+}else{
+  
+$ff= mysqli_query($connection, "SELECT * FROM lib.faculty where facid='$fac'");
+$fff=mysqli_fetch_assoc($ff);
+$ffff=$fff["faculty"];
 
+}
+
+
+
+if( $dep == ""){
+  $dddd="All departments";
+}else{
+  
+  $dd= mysqli_query($connection, "SELECT * FROM lib.dept where deptid='$depp'");
+  $ddd=mysqli_fetch_assoc($dd);
+ $dddd=$ddd["deptname"];
+  
+  }
+
+
+
+
+
+if( $year != ""){
+  $yearrr="$yearr";
+}
+$_SESSION['dd']=$dddd;
+$_SESSION['yy']=$yearrr;
+  $_SESSION['rch'] = $by;
+  $_SESSION['sech'] = $_POST['needle'];
+  $_SESSION['ff']=$ffff;
   $_SESSION['search'] = $search;
 
 
@@ -74,6 +107,11 @@ if ($_POST['seek'] != "") {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gr8tson tech</title>
+  <?php
+
+include("resolution.php");
+
+?>
 </head>
 
 

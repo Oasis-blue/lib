@@ -17,6 +17,8 @@ if($_GET["rssn"]==""){
 
 }
 
+
+
 include("checkses.php");
 
 $contid=$_GET["rssn"];
@@ -37,14 +39,15 @@ $re="Send Request";}
 
 
 if($_POST["submit"]!=""){
+    $tim=date("h:i:sa");
 $cop=$_POST["nocop"];
-$sendreq=mysqli_query($connection,"insert into lib.requests(requesterid, bookid, no_of_copies, date_of_req, approval_status) values('$useridd','$bookid','$cop','$date','pending')");
+$sendreq=mysqli_query($connection,"insert into lib.requests(requesterid, bookid, no_of_copies, date_of_req, approval_status,reqtime) values('$useridd','$bookid','$cop','$date','pending','$tim')");
 
 
 if($sendreq==1){
     $suc='Request sent successfully. Your request will be attended to shortly
     <br>
-    Please note that your request can only be approved on working days<br><a href="index.php">Go to homepage</a>
+    Please note that your request can only be approved on working days and requests are accepted on a first come first serve basis.<br><a href="index.php">Go to homepage</a>
     ';
 }else{$suc="failed to send request. please try again.";}
 
@@ -77,7 +80,7 @@ if($sendreq==1){
     <title>Request </title>
 </head>
 <body>
-<table width="100%">
+<table width="100%" class="tabbb">
 <?php
 
 include("header.php");
@@ -100,6 +103,7 @@ include("header.php");
 <br>
 
 <div class="holder">
+  <center>  <div class="y">
 <div class="clicker">
 
 <h1><?php echo $ret["title"] ?>[<?php echo $ret["yearofpub"]  ?>]</h1>
@@ -129,7 +133,7 @@ include("header.php");
 <br>
 <br>
 
-
+    </div></center><br><br>
 
 
 <form method="POST">

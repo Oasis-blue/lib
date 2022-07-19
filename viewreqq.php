@@ -59,9 +59,9 @@ include("header.php");
 <tr class="frow">
 
 <th class="thh">Request ID</th>
-<th class="thh">Content ID</th>
+
 <th class="thh">Title</th>
-<th class="thh">Type</th>
+<th class="thh">Resource Type</th>
 <th class="thh">No. of copies requested</th>
 
 <th class="thh">Date of request</th>
@@ -101,7 +101,7 @@ while($getres=mysqli_fetch_array($checkres)){
 <tr class="rrow">
 <td class="tdd"><?php echo $getres["requestid"] ?></td>
 
-<td class="tdd"><?php echo $getres["bookid"] ?> </td>
+
 
 
 

@@ -2,6 +2,53 @@
 <style>
 
 
+/* Import Google Fonts */
+@import url("//fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+/* Paragraph */
+.nn{
+ max-width:51vw;
+ font-family:'Poppins', sans-serif;
+ text-align:center;
+ font-size:16px;
+}
+
+
+
+
+/* Import Google Fonts */
+@import url("//fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+/* Paragraph */
+.nm{
+ font-family:'Poppins', sans-serif;
+ font-size:2em;
+ font-weight:500;
+}
+
+/* Sugg */
+center .nm .sugg{
+ font-family:'Poppins', sans-serif;
+ font-size:1em;
+ cursor:pointer;
+}
+
+/* Sugg (hover) */
+center .nm .sugg:hover{
+ background-color:#72c0f7;
+}
+
+
+/* Division */
+.holder .y{
+ background-color:rgba(2,88,89,0.38);
+ background-image:linear-gradient(to right, #f0f2f0 0%, #000c40 100%);
+ width:50%;
+ border-top-right-radius:22%;
+ border-bottom-left-radius:22%;
+}
+
+
 /* Colo */
 .colo{
  background-color:#025859;
@@ -779,29 +826,32 @@ window.onclick=function(event){if(event.target ==modal){mmm.style.display="none"
 
 
             </li>
+
+            <li>
+
+<div class="dropdown">
+  <a href="" class="navlink">OTHER RESOURCES</a>
+  <div class="dropdown-content">
+    <a href="">ARTICLES/JOURNALS</a>
+    <a href="">ONGOING RESEARCH</a>
+    <a href="">NEWSPAPERS/MAGAZINES</a>
+    <a href="">PHOTO LIBRARY</a>
+    <a href="">PAST QUESTIONS</a>
+    <a href="">OTHER PUBLICATIONS</a>
+  </div>
+</div>
+
+
+</li>
+
             <li><a href="" class="navlink">VIDEOS</a></li>
 
             <li><a href="" class="navlink">AUTHORS</a></li>
 
 
 
-            <li>
-
-              <div class="dropdown">
-                <a href="" class="navlink">OTHER RESOURCES</a>
-                <div class="dropdown-content">
-                  <a href="">ARTICLES/JOURNALS</a>
-                  <a href="">ONGOING RESEARCH</a>
-                  <a href="">NEWSPAPERS/MAGAZINES</a>
-                  <a href="">PHOTO LIBRARY</a>
-                  <a href="">PAST QUESTIONS</a>
-                  <a href="">OTHER PUBLICATIONS</a>
-                </div>
-              </div>
-
-
-            </li>
-            <li><a href="" class="navlink">REQUEST A BOOK</a></li>
+        
+          <?php echo $reqq ?>
 
 
 

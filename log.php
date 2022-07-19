@@ -40,7 +40,7 @@ if(isset($_SESSION['user'])){
     <title>Document</title>
 </head>
 <body>
-    <table width="100%">
+    <table width="100%" class="tabbb">
         <?php
 
 include("header.php");

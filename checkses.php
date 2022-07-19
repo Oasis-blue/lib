@@ -54,7 +54,7 @@ if(!isset($_SESSION['admin'])){
     <label for="id">Library card no.:<br></label><input type="text" name="id" id="id" class="id" placeholder="Enter your library number" required >
     <br>
     <br>
-    <label for="pass">PIN:<br></label><input type="password" name="pass" id="pass" class="pass" placeholder="Enter your pin" required >
+    <label for="pass">Password:<br></label><input type="password" name="pass" id="pass" class="pass" placeholder="Enter your pin" required >
     <br>
     <br>
     <input type="submit" name="login" class="login" value="Login">
@@ -84,7 +84,7 @@ $userlog="";
 $getlibcard="";
     }else{
 
-      $getlibcard=' <li><a href="signup.php" class="navlink">GET A LIBRARY CARD</a></li>';
+      $getlibcard=' <li><a href="signup.php" class="navlink">REGISTER</a></li>';
     }
     
     if(isset($_SESSION['user'])){$adlog="";
@@ -96,7 +96,7 @@ $getlibcard="";
       $count=mysqli_num_rows($goc);
       $bottom1='<a class="flink" href="viewreqq.php">My requests('.$count.')</a>';
      
-
+$reqq='  <li><a href="sugg.php" class="navlink">REQUEST AN ADDITION</a></li>';
 
 
       }else{
@@ -104,7 +104,7 @@ $getlibcard="";
 
 
   $reqm='<a class="view" href="log.php">Request</a>
-';   $getlibcard=' <li><a href="signup.php" class="navlink">GET A LIBRARY CARD</a></li>';
+';   $getlibcard=' <li><a href="signup.php" class="navlink">REGISTER</a></li>';
       }
       if(isset($_SESSION['search'])){
 $gob='<a href="res.php">Go back to search results</a>';

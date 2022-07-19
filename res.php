@@ -4,7 +4,16 @@
 session_start();
 
 $connection = mysqli_connect("localhost", "root", "mysql", "lib");
+if(
+$_POST["sugg"]!=""
 
+){
+    if(!isset($_SESSION['user'])){
+$suerr="You need to be logged in you use this feature!";
+    }else{
+    header("Location:sugg.php");}
+    
+    ;}
 include("logwork.php");
 include("checkses.php");
 if(!isset($_SESSION['search'])){
@@ -20,7 +29,34 @@ $search=mysqli_query($connection,"$ss");
 
 
 if($search and mysqli_num_rows($search)<1){
-    $nores='<h1 style="color:white;font-family:Arial;margin-left:18%">No Result Found</h1>';
+
+
+
+
+
+
+
+
+    $nores='<br><h1 style="color:black;font-family:Arial;margin-left:18%">No Result Found</h1>';
+}else{$th=' <tr>
+    <th>Bookid</th>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Type</th>
+    <th>Category</th>
+    <th>Classification</th>
+    <th>Course</th>
+    <th>Department</th>
+    <th>Year of publication</th>
+    <th>Description</th>
+
+
+
+</tr>'
+
+;
+
+
 }
 
 }
@@ -92,7 +128,7 @@ color: white;
 <p class="head">
 <a href="index.php" class="back" >Go back</a></p>
 </div>
-<table width="100%">
+<table width="100%" class="tabbb">
 <?php
 
 include("header.php");
@@ -105,22 +141,8 @@ include("header.php");
 <p class="head1">Search results(<?php echo mysqli_num_rows($search) ?>)</p>
 <br></div>
 <?php echo $nores; ?>
-<table width="100%">
-    <tr>
-        <th>Bookid</th>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Type</th>
-        <th>Category</th>
-        <th>Classification</th>
-        <th>Course</th>
-        <th>Department</th>
-        <th>Year of publication</th>
-        <th>Description</th>
-
-
-
-    </tr>
+<table width="100%" class="doit">
+  <?php echo $th;  ?> 
 <?php while($getdata3=mysqli_fetch_array($search)){ ?>
 
     <tr class="result">
@@ -188,10 +210,68 @@ echo $reqm; ?>
 </table>
 
 
+<?php
+
+if($search and mysqli_num_rows($search)<1){
+
+?><center>
+<p class="nn">We did not find any result with parameters:<br>
+  <?php if  ($_SESSION['sech']!=""){ ?>
+<?php echo $_SESSION['rch'];?>:<?php echo " "; ?><b>'<?php echo $_SESSION['sech'] ?>'</b><br><?php } ?>
+ Faculty:<br><b><?php echo $_SESSION['ff'];?></b><br>Department:<br><b> <?php echo $_SESSION['dd'];?></b><br> <?php 
+
+if($_SESSION['yy']!=""){
+    echo "published "; echo "<b>".$_SESSION['yy']."</b> <br>" ;
+}else
+echo "";?>
 
 
 
 
+in our database.</p>
+  </center>
+
+
+
+
+
+<?php
+
+
+}
+
+
+?>
+
+<?php
+
+
+
+unset($_SESSION['ff']);
+unset($_SESSION['dd']);
+ unset($_SESSION['dd']);
+ unset($_SESSION['yy']);
+unset($_SESSION['rch']);
+unset($_SESSION['sech']);
+
+
+
+
+
+?>
+<?php if(isset($_SESSION['admin'])){}else{?>
+<center>
+    <p class="nm" style="color: red;">  <?php  echo $suerr  ?>
+</p>
+<form method="POST">
+<p class="nm">You can<br><button type="submit" name="sugg" value="sug" class="sugg">Request an addition</button><br>to the library.</p>
+
+</form>
+
+</center>
+<?php } ?>
+
+<div style="min-height: 70vh;"></div>
     
 </body>
 </html>

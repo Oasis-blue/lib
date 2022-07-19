@@ -39,7 +39,7 @@ if(isset($_SESSION['user'])){
     <title>Document</title>
 </head>
 <body>
-    <table width="100%">
+    <table width="100%" class="tabbb">
         <?php
 
 include("header.php");
@@ -71,9 +71,9 @@ include("header.php");
 <div class="table" >
 <div class="tr">
     <div class="td">
-<label for="fname">First name:<br></label><input type="text" name="fname" id="fname" placeholder="Enter your Firstname" value="<?php echo $re1; ?>" required >
+<label for="fname">First Name:<br></label><input type="text" name="fname" id="fname" placeholder="Enter your Firstname" value="<?php echo $re1; ?>" required >
     </div><div class="td">
-<label for="sname">Sur name:<br></label><input type="text" name="surname" id="sname" placeholder="Enter your Surname" value="<?php echo $re2; ?>" required >
+<label for="sname">Surname:<br></label><input type="text" name="surname" id="sname" placeholder="Enter your Surname" value="<?php echo $re2; ?>" required >
   </div>
 
 
@@ -97,8 +97,8 @@ include("header.php");
 <div class="tr">
     <div class="td">
 
-    <label for="pin">Choose PIN:<br></label><input type="password" name="pin" id="pin"  placeholder="Choose a pin" required >
-    </div><div class="td"> <label for="pinn">Confirm PIN:<br></label><input type="password" name="pinn" id="pinn"  placeholder="Re-enter pin" required >
+    <label for="pin">Choose a Password:<br></label><input type="password" name="pin" id="pin"  placeholder="Choose a password" required >
+    </div><div class="td"> <label for="pinn">Confirm Password:<br></label><input type="password" name="pinn" id="pinn"  placeholder="Re-enter password" required >
 </div>
     
 </div>
