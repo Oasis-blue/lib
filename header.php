@@ -1,6 +1,113 @@
 
 <style>
 
+
+/* Colo */
+.colo{
+ background-color:#025859;
+}
+
+/* Link */
+.colo center a{
+ color:#5fe7de;
+ font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;
+ text-decoration:underline;
+}
+
+/* Paragraph */
+.colo center p{
+ color:#f1c40f;
+ font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;
+}
+
+
+
+
+
+
+/* Table Data */
+.tbb tbody td{
+ border-bottom-style:solid;
+ border-bottom-width:1px;
+}
+
+
+/* Table */
+.tbb{
+ font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;
+ font-size:17px;
+ transform:translatex(0px) translatey(0px);
+}
+
+/* Table Data */
+.tbb tbody .tdd{
+ border-right-style:solid;
+ border-right-width:1px;
+ border-bottom-style:solid;
+ border-bottom-width:1px;
+}
+
+/* Th */
+.tbb tbody .thh{
+ border-right-style:solid;
+ border-right-width:1px;
+ border-bottom-style:solid;
+ border-bottom-width:1px;
+}
+
+
+
+.holder .clicker{
+
+
+ font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+
+}
+/* Clicker */
+.holder form .clicker{
+ font-size:18px;
+
+ font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+
+}
+.clicker h1{
+  font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;
+
+}
+
+
+/* Req */
+.req{
+ background-color:#14bfcc;
+ width:10%;
+
+ font-size:18px;
+ border-style:solid;
+ border-width:1px;
+ padding-top:1%;
+ padding-bottom:1%;
+ cursor: pointer;
+}
+
+/* Req (hover) */
+.req:hover{
+ background-color:#5182cc;
+}
+
+/* Input */
+.cop{
+ width:4%;
+ height:6vh;
+ font-size:18px;
+}
+
+
 /* Label */
 .table .tr label{
  font-weight:600;
@@ -707,5 +814,33 @@ window.onclick=function(event){if(event.target ==modal){mmm.style.display="none"
       </td>
 
     </tr>
+
+
+
+    <tr height="5%" class="one">
+      <td>
+
+        <div class="up">
+         
+
+
+        
+
+<?php echo $bottom1 ?>
+<?php echo $bottom2 ?>
+        </div>
+      </td>
+    </tr>
+
+    
+
+
+
+
+
+
+
+
+
 
     <p class="mmm" id="mmm" style="text-align: center"><?php echo $err;?></p>

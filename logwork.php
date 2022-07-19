@@ -7,7 +7,7 @@ if($_POST["loginad"]!=""){
 $id=$_POST["adid"];
 $key=$_POST["key"];
 
-$logquery=mysqli_query($connection,"select * from lib.admin where adminid='$id' and key='$key'");
+$logquery=mysqli_query($connection,"select * from lib.admin where adminid='$id' and keyy='$key'");
 if(mysqli_num_rows($logquery)>0){
 $adm=mysqli_fetch_assoc($logquery);
 

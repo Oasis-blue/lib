@@ -1,7 +1,7 @@
 <?php
 
 
-
+$connection = mysqli_connect("localhost", "root", "mysql", "lib");
 if(!isset($_SESSION['admin'])){
 
     $adlog='         <li>
@@ -72,9 +72,12 @@ if(!isset($_SESSION['admin'])){
     }
     
     if(isset($_SESSION['admin'])){
-        $vie='<a class="navlink" href="viewreq.php">Requests</a>';
+        $vie='<a class="navlink" href="viewreq.php">REQUESTS</a>';
     $logout='<a class="flink"  href="logout.php">LOG OUT</a>';
-    
+    $bottom2='<a class="flink" href="add.php">Add a book</a>';
+    $goc=mysqli_query($connection,"select * from lib.requests where approval_status='pending'");
+    $count=mysqli_num_rows($goc);
+    $bottom1='<a class="flink" href="viewreq.php?sts=pending">View pending requests('.$count.')</a>';
 
     $reqm='<a class="view" href="upload\ '.$getdata3['link'].' target="_blank">View</a>';
 $userlog="";
@@ -88,7 +91,18 @@ $getlibcard="";
       $logout='<a class="flink"  href="logout.php">LOG OUT</a>';
       $getlibcard="";
       //$reqm="";
+      $user=$_SESSION['user'];
+      $goc=mysqli_query($connection,"select * from lib.requests where requesterid='$user'");
+      $count=mysqli_num_rows($goc);
+      $bottom1='<a class="flink" href="viewreqq.php">My requests('.$count.')</a>';
+     
+
+
+
       }else{
+
+
+
   $reqm='<a class="view" href="log.php">Request</a>
 ';   $getlibcard=' <li><a href="signup.php" class="navlink">GET A LIBRARY CARD</a></li>';
       }

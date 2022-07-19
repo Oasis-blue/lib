@@ -1,4 +1,18 @@
 <?php
+
+
+session_start();
+if(!isset($_SESSION['admin'])){
+
+   
+    header("Location:index.php");
+
+
+}
+
+include("checkses.php");
+$bottom2="";
+
 // connect to the database
 $conn = mysqli_connect('localhost', 'root', 'mysql', 'lib');
 $connection = mysqli_connect('localhost', 'root', 'mysql', 'lib');
@@ -109,14 +123,14 @@ if(mysqli_num_rows($checktag3)<1){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Add a book</title>
 </head>
 <style>
 
 /* Body */
 body{
- background-color:#017373;
- font-size:2em;
+
+
  font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;
  color:#ffffff;
 }
@@ -129,13 +143,13 @@ body{
 /* Input */
 input{
  font-size:20px;
+ height: 2em;
 }
 
 /* Form Division */
 form{
  display:flex;
- grid-template-columns:auto;
- grid-template-rows:auto !important;
+
  flex-direction:column;
  justify-content:normal;
  align-items:normal;
@@ -165,6 +179,7 @@ form label{
 
 /* Select */
 select{
+    height: 2em;
  font-size:21px;
 }
 
@@ -175,9 +190,19 @@ select{
 
 /* Input */
 form input[type=file]{
+
  margin-top:36px;
 }
 
+
+/* Division */
+.hl{
+ background-color:#7f8c8d;
+ border-top-left-radius:10%;
+ border-top-right-radius:10%;
+ border-bottom-left-radius:10%;
+ border-bottom-right-radius:10%;
+}
 
 
 
@@ -185,7 +210,25 @@ form input[type=file]{
 
 
 <body>
-    
+<table width="100%">
+<?php
+
+include("header.php");
+
+?>
+
+</table>  
+<hr style="color:black" >
+
+<br>
+<div class="colo">
+<br>
+<center>
+<a href="index.php" style="color: white;">GO TO HOMEPAGE</a>
+</center>
+<br> </div>
+<br>
+<div class="hl">
 <form method="POST" enctype="multipart/form-data">
 
 <input type="file" name="myfile"><br>
@@ -355,8 +398,10 @@ while($t=mysqli_fetch_array($selectt)){
 
 <input type="submit" name="add" value="add">
 </form>
+<br><br><br><br><br><br>
+</div>
 
-
+<div style="min-height: 40vh ;"></div>
 </body>
 </html>
 
