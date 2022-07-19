@@ -168,9 +168,11 @@ $dept=mysqli_fetch_assoc($getdep); echo $dept['deptname'];
 
 <td><?php  echo $getdata3['description'] ?></td>
 <td>
-<?php $cid=$getdata3["contentid"]; $reqm='<a class="view" href="req.php?rssn='.$cid.'"'.">Request</a>"
+<?php
+if(isset($_SESSION['user'])){
+$cid=$getdata3["contentid"]; $reqm='<a class="view" href="req.php?rssn='.$cid.'"'.">Request</a>"
 
-;
+;}
 
 
 
