@@ -1,5 +1,168 @@
 
 <style>
+
+/* Import Google Fonts */
+@import url("//fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+/* Form Division */
+.alr .fm form{
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ flex-direction:column;
+ font-size:19px;
+ font-family:'Nunito Sans', sans-serif;
+ transform:translatex(0px) translatey(0px);
+}
+
+/* Input */
+.fm p input[type=number]{
+ font-size:18px;
+}
+
+/* Appro */
+.fm form .appro{
+ font-size:18px;
+ background-color:#27ae60;
+ color:#f7f7f7;
+ border-color:#2ecc71;
+ border-top-right-radius:5px;
+ border-bottom-left-radius:5px;
+ border-bottom-right-radius:5px;
+ border-top-left-radius:5px;
+}
+
+/* Appro (hover) */
+.fm form .appro:hover{
+ background-color:#2ecc71;
+ border-color:#27ae60;
+ cursor: pointer;
+}
+
+
+@media (max-width:523px){
+
+/* Division */
+table td .up{
+ flex-direction:row;
+ display:grid !important;
+ align-content:center;
+}
+
+/* Division */
+table tbody .one td .up{
+ grid-template-columns:auto 1fr !important;
+}
+
+}
+
+@media (max-width:498px){
+
+/* Division */
+table td .up{
+ transform:translatex(0px) translatey(0px);
+}
+
+/* Link */
+table .up a{
+ width:114px;
+}
+
+}
+
+@media (max-width:270px){
+
+/* Division */
+table td .up{
+ row-gap:9px;
+}
+
+}
+/* Apr */
+.ab tr .apr{
+ background-color:#27ae60;
+ color:#f1f1f2;
+}
+
+/* Deny */
+.ab tr .deny{
+ background-color:#e74c3c;
+ color:#ffffff;
+}
+
+/* Deny (hover) */
+.ab tr .deny:hover{
+ background-color:#ecf0f1;
+ color:#e74c3c;
+}
+
+/* Apr (hover) */
+.ab tr .apr:hover{
+ color:#27ae60;
+ background-color:#ecf0f1;
+}
+
+/* Import Google Fonts */
+@import url("//fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+/* Paragraph */
+.alr .alrt p{
+ text-align:center;
+ font-family:'Nunito Sans', sans-serif;
+ font-size:19px;
+ font-weight:500;
+}
+
+
+/* Import Google Fonts */
+@import url("//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+/* Division */
+.bc{
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center;
+ font-family:'Nunito', sans-serif;
+ font-size:17px;
+ text-align:center;
+}
+
+/* Table Data */
+.ab tr td{
+ border-style:dotted;
+ border-width:1px;
+}
+
+/* Th */
+.ab tr th{
+ border-right-style:dotted;
+ border-right-width:1px;
+ border-left-style:dotted;
+ border-left-width:1px;
+}
+
+/* Link */
+.ab tr a{
+ padding-left:8px;
+ padding-right:8px;
+ border-top-left-radius:5px;
+ border-top-right-radius:5px;
+ border-bottom-left-radius:5px;
+ border-bottom-right-radius:5px;
+ border-style:solid;
+ border-width:1px;
+}
+
+
+
+
+
+
+
+
+
+
 .sug{cursor: pointer;}
 /* Division */
 div .vv{
@@ -312,9 +475,37 @@ center .nm .sugg:hover{
     color: white;
   }
 
+  <?php
+$stories=array(
 
+"photo.jpg",
+"1.jpg",
+"2.jpg",
+"3.jpg",
+"4.jpg",
+"5.jpg",
+"6.jpg",
+"7.jpg",
+"9.jpg",
+"8.jpg",
+"10.jpg",
+"11.jpg",
+"12.jpg",
+"13.jpg",
+"14.jpg",
+"15.jpg",
+"16.jpg",
+"17.jpg",
+"18.jpg",
+"19.jpg",
+"20.jpg",
+"21.jpg",
+"22.jpg",
+"23.jpg"
+);
+$dis= array_rand($stories,1);?>
   .bod {
-    background-image: url("photo.jpg");
+    background-image: url("<?php  echo $stories[$dis]  ?>");
     background-size: cover;
 
   }
@@ -865,7 +1056,7 @@ window.onclick=function(event){if(event.target ==modal){mmm.style.display="none"
     <tr height="10%" class="two">
       <td>
         <nav>
-          <img class="logo" src="logoo.png">
+          <a href="index.php"> <img class="logo" src="logoo.png"></a>
           <ul>
 
 

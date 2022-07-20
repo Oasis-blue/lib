@@ -98,8 +98,18 @@ $getlibcard="";
 
 $checknot=mysqli_query($connection, "select * from lib.notreqs");
 if(mysqli_num_rows($checknot)>0){
+  
+  while($cc=mysqli_fetch_assoc($checknot)){
 
-  $coun=mysqli_num_rows($checknot);
+$ccc=$cc["bookid"];
+$cccc=mysqli_query($connection,"select * from lib.content where contentid='$ccc' and copies>0");
+if(mysqli_num_rows($cccc)>0){
+$c[]=mysqli_num_rows($cccc);
+}
+
+  }
+
+$coun=count($c);
   $notif='<a class="flink" href="nores.php">Notifications('.$coun.')</a>';}
 
 
