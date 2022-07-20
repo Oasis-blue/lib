@@ -900,10 +900,11 @@ window.onclick=function(event){if(event.target ==modal){mmm.style.display="none"
          
 
 
-        
-
+        <?php echo $bottom4 ?>   
+        <?php echo $bottom3 ?>
 <?php echo $bottom1 ?>
 <?php echo $bottom2 ?>
+<?php echo $notif ?>
         </div>
       </td>
     </tr>
