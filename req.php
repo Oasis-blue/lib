@@ -34,9 +34,32 @@ if($ret["copies"]<1){
     $def=0;
     $re="Not Available";
     $pick="disabled";
+
+$gonot='
+<br><br><form method="POST">
+<div class="clicker"><input type="submit" name="not" class="req"   value="Notify me when this is available.">
+
+</div>
+</form>
+';
+
+
 }else{$def=1;
 $re="Send Request";}
 
+if($_POST["not"]!=""){
+
+
+    $sendreqq=mysqli_query($connection,"insert into lib.notreqs(userid, bookid, date, time) values('$useridd','$bookid','$date','$tim')");
+
+    if($sendreqq==1){
+        $suc='Request sent successfully. You will be notified once this resource becomes available;
+        <br>
+       ';
+    }else{$suc="failed to send request. please try again.";}
+
+
+}
 
 if($_POST["submit"]!=""){
     $tim=date("h:i:sa");
@@ -151,12 +174,16 @@ include("header.php");
 
 <form method="POST">
 
-<div class="clicker"> Make request for <input type="number" min="0" max="<?php echo $ret["copies"];  ?>" name="nocop" class="cop" value="<?php echo $def ?>"  <?php echo $pick ?> > copy(ies) of the above.</div>
+<div class="clicker"> Make request for <input type="number" min="1" max="<?php echo $ret["copies"];  ?>" name="nocop" class="cop" value="<?php echo $def ?>"  <?php echo $pick ?> > copy(ies) of the above.</div>
 
 <br> <div class="clicker"><input type="submit" name="submit" class="req" <?php echo $pick ?>  value="<?php echo $re ?> ">
 
 </div>
 </form>
+
+<br>
+<?php  echo $gonot;   ?>
+
 
 </div>
 <br>

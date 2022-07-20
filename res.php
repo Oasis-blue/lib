@@ -9,7 +9,7 @@ $_POST["sugg"]!=""
 
 ){
     if(!isset($_SESSION['user'])){
-$suerr="You need to be logged in you use this feature!";
+$suerr="You need to be logged in to use this feature!";
     }else{
     header("Location:sugg.php");}
     
@@ -74,6 +74,18 @@ if($search and mysqli_num_rows($search)<1){
     <title>Search results</title>
 </head>
 <style>
+   
+@import url("//fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
+
+/* Table Data */
+.doit tbody td,th{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+}
+.doit tbody td{
+ height:2.3em;
+ background-color:#ecf0f1;
+}
 
 
 /* Division */
@@ -207,14 +219,15 @@ $dept=mysqli_fetch_assoc($getdep); echo $dept['deptname'];
 if(isset($_SESSION['user'])){
 $cid=$getdata3["contentid"]; $reqm='<a class="view" href="req.php?rssn='.$cid.'"'.">Request</a>"
 
-;}
+;}elseif(isset($_SESSION['admin'])){
 
-
-
-if(!isset($_SESSION['user'])){
+    $reqm='<a class="view" href="upload\ '.$getdata3['link'].' target="_blank">View</a>';
+}else{
 $reqm='<a class="view" href="log.php">Request</a>
 ';  
 }
+
+
 echo $reqm; ?>
 </td>
 
