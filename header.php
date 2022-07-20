@@ -1,7 +1,53 @@
 
 <style>
+.sug{cursor: pointer;}
+/* Division */
+div .vv{
+ width:507px;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+}
 
+/* Inp */
+.inp{
+ font-size:1.2em;
+}
 
+/* Sell */
+.sell{
+ font-size:1em;
+}
+
+/* Sug */
+.vv form .sug{
+ font-size:1em;
+}
+
+/* Add */
+#add{
+ width:100% !important;
+}
+
+/* Label */
+.vv form label{
+ font-weight:500;
+}
+
+@media (max-width:474px){
+
+ /* Division */
+ div .vv{
+  width:316px;
+ }
+ 
+}
+
+@media (max-width:441px){
+
+ /* New created breakpoint. */
+ 
+}
 
 /* Paragraph */
 center form p{

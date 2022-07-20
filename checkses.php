@@ -77,7 +77,14 @@ if(!isset($_SESSION['admin'])){
     $bottom2='<a class="flink" href="add.php">Add a book</a>';
     $bottom3='<a class="flink" href="ret.php">Return a book</a>';
 
-    $bottom4='<a class="flink" href="suggs.php">Suggestions</a>';
+    $checksub=mysqli_query($connection, "select * from lib.sugg");
+    if(mysqli_num_rows($checksub)>0){
+    
+      $counn=mysqli_num_rows($checksub);}
+
+
+
+    $bottom4='<a class="flink" href="suggs.php">Suggestions('.$counn.')</a>';
 
     $goc=mysqli_query($connection,"select * from lib.requests where approval_status='pending'");
     $count=mysqli_num_rows($goc);
@@ -116,12 +123,13 @@ $reqq='  <li><a href="sugg.php" class="navlink">REQUEST AN ADDITION</a></li>';
 $checknot=mysqli_query($connection, "select * from lib.notreqs where userid='$user'");
 if(mysqli_num_rows($checknot)>0){
   
-  while($cc=mysqli_fetch_array($checknot)){
+  while($cc=mysqli_fetch_assoc($checknot)){
 
 $ccc=$cc["bookid"];
 $cccc=mysqli_query($connection,"select * from lib.content where contentid='$ccc' and copies>0");
+if(mysqli_num_rows($cccc)>0){
 $c[]=mysqli_num_rows($cccc);
-
+}
 
   }
 

@@ -37,7 +37,7 @@ if($ret["copies"]<1){
 
 $gonot='
 <br><br><form method="POST">
-<div class="clicker"><input type="submit" name="not" class="req"   value="Notify me when this is available.">
+<div class="clicker"><input type="submit" name="not"   value="Notify me when this is available.">
 
 </div>
 </form>
