@@ -23,6 +23,49 @@ $rqid=$_GET["rqid"];
 
 $goc=mysqli_query($connection,"select * from lib.requests where requestid='$rqid'");
 $gt=mysqli_fetch_assoc($goc);
+if($_POST["appro"]!=""){
+
+    $l=$gt['bookid'];
+    $ll=mysqli_query($connection,"select * from lib.content where contentid='$l'");
+    $lll=mysqli_fetch_array($ll);
+   
+    $lt=$lll["typeid"];
+$ty=mysqli_query($connection,"select * from lib.fines where typeid='$lt'");
+$typ=mysqli_fetch_assoc($ty);
+$fine=$typ['amount_per_day'];
+$admin=$_SESSION['admin'];
+$date= date("d-m-Y") ;
+$num=$_POST["num"];
+//$tim=date("h:i:sa");
+
+
+
+$approve=mysqli_query($connection,"update lib.requests set approval_status='approved' where requestid='$rqid'");
+$approve1=mysqli_query($connection,"update lib.requests set date_approved='$date' where requestid='$rqid'");
+$approve2=mysqli_query($connection,"update lib.requests set approved_by='$admin' where requestid='$rqid'");
+$approve3=mysqli_query($connection,"update lib.requests set fine_per_day='$fine' where requestid='$rqid'");
+$approve4=mysqli_query($connection,"update lib.requests set issued_copies='$num' where requestid='$rqid'");
+
+
+if($approve==1 && $approve1==1 && $approve2==1 && $approve3==1 && $approve4==1){
+
+$upcont=mysqli_query($connection,"update lib.content set copies=copies-$num where contentid=$l");
+
+}
+if($upcont==1){
+$mesg="Request approved";
+
+}else{$mesg="failed to approve request, please contact programmer";}
+
+
+
+}
+
+
+
+
+
+
 
 
 
@@ -57,10 +100,13 @@ include("header.php");
 
 </table>  
 <hr style="color:black" >
-
+<div style="background-image: url('<?php  echo $stories[$dis]  ?>');
+    background-size: cover;">
 <div class="alr">
+ <div style="border: 1px solid ; background-color: rgba(255, 255, 255, 0.7);">    <br>      <br> 
   <center>  <a href="viewreq.php">GO BACK</a></center>
 <div class="alrt">
+    <p><?php echo $mesg ?></p>
 <p>You are about to approve user 
     
 <?php echo $gt["requesterid"]; ?>'s 
@@ -115,15 +161,20 @@ if($bookav<1){echo "disabled";}   ?>
 </form>
 
 
+<br>
 
 </div>
 
-
+    </div>
 
 
 
 
 </div>
+<br>
+</div>
+<div style="min-height: 80vh;background-image: url('<?php  echo $stories[$dis]  ?>');
+    background-size: cover;"></div>
 
 
 

@@ -3,7 +3,7 @@
 
 $connection = mysqli_connect("localhost", "root", "mysql", "lib");
 if(!isset($_SESSION['admin'])){
-
+  $getlibcard=' <li><a href="signup.php" class="navlink">REGISTER</a></li>';
     $adlog='         <li>
     
     
@@ -38,7 +38,7 @@ if(!isset($_SESSION['admin'])){
     
     
     if(!isset($_SESSION['user'])){
-    
+      $getlibcard=' <li><a href="signup.php" class="navlink">REGISTER</a></li>';
     $userlog='
     <li>
     
@@ -157,7 +157,7 @@ $coun=count($c);
   
 
   $reqm='<a class="view" href="log.php">Request</a>
-';   $getlibcard=' <li><a href="signup.php" class="navlink">REGISTER</a></li>';
+';  
       }
       if(isset($_SESSION['search'])){
 $gob='<a href="res.php">Go back to search results</a>';

@@ -135,6 +135,91 @@ echo $bookav ?>
 
 
 
+<?php
+
+$gocc=mysqli_query($connection,"select * from lib.requests where approval_status='approved'");
+$countc=mysqli_num_rows($gocc)
+
+
+?>
+<div class="bc">
+<p><b><u><?php echo "Approved Requests($countc) "; ?></u></b></p>
+
+<div class="cb">
+
+<?php 
+
+if(mysqli_num_rows($gocc)>0){
+?>
+<table class="ab"><tr>
+    <th>RequestID</th>
+    <th>UserID</th>
+    <th>Title</th>
+    <th>Number Requested</th>
+    <th>Number Approved</th>
+    <th>Date of Approval</th>
+    <th>Approved by</th>
+
+    </tr>
+<?php
+while($gco=mysqli_fetch_array($gocc)){
+
+
+?>
+
+<tr>
+<td><?php echo $gco['requestid'] ?> </td>
+<td><?php echo $gco['requesterid'] ?> </td>
+<td><?php
+$c=$gco['bookid'];
+$cll=mysqli_query($connection,"select * from lib.content where contentid='$c'");
+$clll=mysqli_fetch_array($cll);
+$bookc=$clll["title"];
+echo $bookc ?> 
+</td>
+<td><?php echo $gco['no_of_copies'] ?> </td>
+<td><?php
+echo $gco["issued_copies"] ?> 
+
+
+</td>
+<td><?php echo $gco['date_approved'] ?> </td>
+<td>adminID<?php echo $gco['approved_by'] ?> </td>
+<td><a href="issue.php?rqid=<?php  echo  $gco['requestid']  ?>" class="apr">Issue</a></td>
+<td><a href="revert.php?rqid=<?php  echo  $gco['requestid']  ?>" class="deny">Revert</a></td>
+
+</tr>
+
+
+<?php
+
+}
+?>
+
+</table>
+
+<?php
+}
+?>
+
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>
