@@ -1177,11 +1177,11 @@ window.onclick=function(event){if(event.target ==modal){mmm.style.display="none"
          
 
 
-        <?php echo $bottom4 ?>   
-        <?php echo $bottom3 ?>
-<?php echo $bottom1 ?>
-<?php echo $bottom2 ?>
-<?php echo $notif ?>
+        <?php if(isset( $bottom4 )){ echo $bottom4 ; }?>   
+        <?php if(isset( $bottom3)){ echo $bottom3 ;} ?>
+<?php if(isset( $bottom1)){ echo $bottom1; } ?>
+<?php if(isset( $bottom2)){ echo $bottom2; } ?>
+<?php if(isset($notif)){ echo $notif ;} ?>
         </div>
       </td>
     </tr>

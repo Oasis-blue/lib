@@ -12,7 +12,7 @@ if($_GET["rqid"]==""){
     header("Location:index.php");
 
 }
-$connection = mysqli_connect("localhost", "root", "mysql", "lib");
+include("connection.php");
 include("checkses.php");
 $rqid=$_GET["rqid"];
 
@@ -39,7 +39,7 @@ $approve=mysqli_query($connection,"update lib.requests set approval_status='issu
 if($approve==1){
 
 
-$mesg="Issue registered";
+$mesg="Issued successfully.";
 
 }else{$mesg="failed to register issue, please contact programmer";}
 
@@ -148,7 +148,7 @@ if($gt["issued_copies"]<1){
 
 <input type="submit" name="appro" class="appro" value="<?php 
 if($gt["approval_status"]!="approved"){
-    echo "Already dealth";
+    echo "Already Issued or reverted";
 }else{ echo
 "Issue" ;}
 

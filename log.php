@@ -2,7 +2,7 @@
 
 session_start();
 
-$connection = mysqli_connect("localhost", "root", "mysql", "lib");
+include("connection.php");
 
 
 

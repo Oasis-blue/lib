@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$connection = mysqli_connect("localhost", "root", "mysql", "lib");
+include("connection.php");
 include("logwork.php");
 
 include("checkses.php");
@@ -14,7 +14,7 @@ $selectdep = mysqli_query($connection, "SELECT * FROM lib.dept");
 
 
 
-
+if(isset($_POST['seek'])){
 
 
 
@@ -96,7 +96,7 @@ $_SESSION['yy']=$yearrr;
 }
 
 
-
+}
 
 ?>
 <!DOCTYPE html>

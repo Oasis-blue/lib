@@ -19,7 +19,7 @@ $_SESSION["bookid"]==""
     header("Location:index.php");
 
 }
-$connection = mysqli_connect("localhost", "root", "mysql", "lib");
+include("connection.php");
 include("checkses.php");
 $rqid=$_SESSION['rett'];
 
@@ -34,6 +34,7 @@ $l=$_SESSION["bookid"];
 
 $goc=mysqli_query($connection,"select * from lib.requests where requestid='$rqid'");
 $gt=mysqli_fetch_assoc($goc);
+if(isset($_POST["appro"])){
 if($_POST["appro"]!=""){
 
     $l=$gt['bookid'];
@@ -75,7 +76,7 @@ $updreq=mysqli_query($connection,"update lib.requests set actual_return_date='$d
 if($updreq==1){
     $upcont=mysqli_query($connection,"update lib.content set copies=copies+$num where contentid=$l");
 
-    $msssg="Return Registered";
+    $msssg="Return successful";
 }
 
 }else{
@@ -95,7 +96,7 @@ if($updreq==1){
 }
 
 
-
+}
 
 
 
@@ -136,7 +137,10 @@ include("header.php");
 <div style="background-image: url('<?php  echo $stories[$dis]  ?>');
     background-size: cover;">
 <div class="alr">
- <div style="border: 1px solid ; background-color: rgba(255, 255, 255, 0.7);">    <br>      <br> 
+ <div style=" border-top-left-radius:49%;
+ border-top-right-radius:50%;
+ background-color:rgba(255,255,255,0.96) !important;
+ border-style:none !important;">    <br>      <br> 
   <center>  <a href="return.php">GO BACK</a></center>
 <div class="alrt">
     <p style="color:green; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"><u><?php echo $msssg ?></u></p>

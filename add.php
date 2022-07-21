@@ -14,8 +14,7 @@ include("checkses.php");
 $bottom2="";
 
 // connect to the database
-$conn = mysqli_connect('localhost', 'root', 'mysql', 'lib');
-$connection = mysqli_connect('localhost', 'root', 'mysql', 'lib');
+include("connection.php");
 // Uploads files
 if ($_POST['add']!="") { // if add button on the form is clicked
     // name of the uploaded file
@@ -208,7 +207,128 @@ form input[type=file]{
 }
 
 
+/* Form Division */
+.hl form{
+ width:746px !important;
+ left:309px;
+}
 
+@media (max-width:1146px){
+
+ /* Form Division */
+ .hl form{
+  left:200px;
+ }
+ 
+}
+
+@media (max-width:1052px){
+
+ /* Form Division */
+ .hl form{
+  left:162px;
+ }
+ 
+}
+
+@media (max-width:974px){
+
+ /* Form Division */
+ .hl form{
+  left:118px;
+ }
+ 
+}
+
+@media (max-width:921px){
+
+ /* Form Division */
+ .hl form{
+  left:174px;
+  width:549px !important;
+ }
+ 
+}
+
+@media (max-width:847px){
+
+ /* Form Division */
+ .hl form{
+  left:106px;
+ }
+ 
+}
+
+@media (max-width:717px){
+
+ /* Form Division */
+ .hl form{
+  width:487px !important;
+ }
+ 
+}
+
+@media (max-width:713px){
+
+ /* New created breakpoint. */
+ 
+}
+
+@media (max-width:684px){
+
+ /* Form Division */
+ .hl form{
+  width:399px !important;
+ }
+ 
+}
+
+@media (max-width:598px){
+
+ /* New created breakpoint. */
+ 
+}
+
+@media (max-width:544px){
+
+ /* Form Division */
+ .hl form{
+  width:324px !important;
+  left:71px;
+ }
+ 
+}
+
+@media (max-width:476px){
+
+ /* New created breakpoint. */
+ 
+}
+
+@media (max-width:421px){
+
+ /* Form Division */
+ .hl form{
+  left:50px;
+ }
+ 
+}
+
+@media (max-width:414px){
+
+ /* New created breakpoint. */
+ 
+}
+
+@media (max-width:395px){
+
+ /* Form Division */
+ .hl form{
+  left:29px;
+  width:286px !important;
+ }
+ 
+}
 </style>
 <?php
 include("resolu.php");

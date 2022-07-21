@@ -10,7 +10,7 @@ if(!isset($_SESSION['user'])){
 
 if(!isset($_SESSION['search'])){
     header("Location:index.php");}
-    $connection = mysqli_connect("localhost", "root", "mysql", "lib");
+    include("connection.php");
 
 if($_GET["rssn"]==""){
     header("Location:res.php");

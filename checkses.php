@@ -1,7 +1,6 @@
 <?php
 
-
-$connection = mysqli_connect("localhost", "root", "mysql", "lib");
+include("connection.php");
 if(!isset($_SESSION['admin'])){
   $getlibcard=' <li><a href="signup.php" class="navlink">REGISTER</a></li>';
     $adlog='         <li>
