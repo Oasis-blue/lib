@@ -11,15 +11,23 @@ if(!isset($_SESSION['admin'])){
 
 include("checkses.php");
 
-$connection = mysqli_connect("localhost", "root", "mysql", "lib");
+include("connection.php");
 if($_POST["look"]!=""){
 $reqid=$_POST["lookret"];
 $checkreq=mysqli_query($connection,"select * from lib.requests where requestid='$reqid'");
 
 if(mysqli_num_rows($checkreq)<1){
 
-    $errmgg="Invalid request ID";
+$checkreq1=mysqli_query($connection,"select * from lib.requests where requesterid='$reqid'");
+if(mysqli_num_rows($checkreq1)>0
+){
+    $_SESSION['searchret']=$reqid;
+    header("Location:searchret.php");
 }else{
+
+
+    $errmgg="Invalid request ID or user ID";
+}}else{
     $goget=mysqli_fetch_assoc($checkreq);
 
 if($goget["approval_status"]!="issued")
@@ -85,12 +93,12 @@ include("header.php");
 <center>  <a href="index.php">GO HOME</a></center>
 <div class="sses">
 <?php echo '<p style="color:red">'.$errmgg."</p>"  ?>
-<p>Enter Request ID to make a return.</p>
+<p>Enter Request ID or User ID to make a return.</p>
 <form method="POST">
 
 
-<label for="lookret">Request ID: </label>
- <input type="text" name="lookret" id="lookret" class="lookret" required placeholder="Enter Request ID">
+<label for="lookret">Request ID or User ID: </label>
+ <input type="text" name="lookret" id="lookret" class="lookret" required placeholder="Enter Request ID or User ID">
 <br>
 <input type="submit" name="look" class="lookre" value="Search">
 

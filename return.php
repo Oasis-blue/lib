@@ -8,11 +8,16 @@ if(!isset($_SESSION['admin'])){
 
 
 }
+
+if($_GET["rqid"]!=""){
+    $_SESSION['rett']=$_GET["rqid"]!="";
+}
+
 if($_SESSION['rett']==""){
     header("Location:index.php");
 
 }
-$connection = mysqli_connect("localhost", "root", "mysql", "lib");
+include("connection.php");
 include("checkses.php");
 $rqid=$_SESSION['rett'];
 
@@ -94,7 +99,10 @@ include("header.php");
 <div style="background-image: url('<?php  echo $stories[$dis]  ?>');
     background-size: cover;">
 <div class="alr">
- <div style="border: 1px solid ; background-color: rgba(255, 255, 255, 0.7);">    <br>      <br> 
+<div style=" border-top-left-radius:49%;
+ border-top-right-radius:50%;
+ background-color:rgba(255,255,255,0.96) !important;
+ border-style:none !important;">     <br>      <br> 
   <center>  <a href="ret.php">GO BACK</a></center>
 <div class="alrt">
     <p><?php echo $mesg ?></p>
@@ -162,7 +170,7 @@ if($bookav<1){
 
 <input type="submit" name="appro" class="appro" value="<?php 
 if($gt["approval_status"]!="issued"){
-    echo "Already dealth";
+    echo "Already returned";
 }else{ echo
 "Complete return" ;}
 

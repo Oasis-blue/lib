@@ -1,7 +1,7 @@
 <?php
 
 
-$connection = mysqli_connect("localhost", "root", "mysql", "lib");
+include("connection.php");
 
 if($_POST["loginad"]!=""){
 $id=$_POST["adid"];

@@ -2,8 +2,7 @@
 
 
 session_start();
-
-$connection = mysqli_connect("localhost", "root", "mysql", "lib");
+include("connection.php");
 if(
 $_POST["sugg"]!=""
 
@@ -20,7 +19,7 @@ if(!isset($_SESSION['search'])){
     header("Location:index.php");
 }else{
 
-$connection = mysqli_connect("localhost", "root", "mysql", "lib");
+include("connection.php");
 $ss=$_SESSION['search'];
 
 

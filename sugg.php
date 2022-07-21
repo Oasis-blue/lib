@@ -8,7 +8,7 @@ if(!isset($_SESSION['user'])){
 
 }
 include("checkses.php");
-$connection = mysqli_connect("localhost", "root", "mysql", "lib");
+include("connection.php");
 $title=$_POST["title"];
 $author=$_POST["author"];
 $typeid=$_POST["type"];
