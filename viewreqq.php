@@ -8,7 +8,7 @@ if(!isset($_SESSION['user'])){
 
 
 }
-$connection = mysqli_connect("localhost", "root", "mysql", "lib");
+include("connection.php");
 include("checkses.php");
 $userr=$_SESSION['user'];
 $checkres=mysqli_query($connection,"select * from lib.requests where requesterid='$userr'");

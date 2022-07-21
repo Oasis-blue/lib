@@ -7,7 +7,7 @@ if(!isset($_SESSION['admin'])){
 
 
 }
-$connection = mysqli_connect("localhost", "root", "mysql", "lib");
+include("connection.php");
 include("checkses.php");
 
 $bottom1='<a class="flink" href=""><b>Pending Requests('.$count.')</b></a>';
