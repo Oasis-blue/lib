@@ -7,6 +7,9 @@ if(!isset($_SESSION['admin'])){
 
 
 }
+
+include("exfix.php");
+include("exfix.php");
 include("connection.php");
 include("checkses.php");
 

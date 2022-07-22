@@ -1,6 +1,7 @@
 <?php
 
 
+include("exfix.php");
 include("connection.php");
 
 if($_POST["loginad"]!=""){

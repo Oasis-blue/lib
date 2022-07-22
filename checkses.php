@@ -1,5 +1,6 @@
 <?php
 
+include("exfix.php");
 include("connection.php");
 if(!isset($_SESSION['admin'])){
   $getlibcard=' <li><a href="signup.php" class="navlink">REGISTER</a></li>';

@@ -8,6 +8,8 @@ if(!isset($_SESSION['admin'])){
 
 
 }
+
+include("exfix.php");
 if($_GET["rqid"]==""){
     header("Location:index.php");
 
@@ -30,7 +32,7 @@ $admin=$_SESSION['admin'];
 $date= date("d-m-Y") ;
 $num=$_POST['num'];
 //$tim=date("h:i:sa");
-$exp==$_POST['exp'];
+$exp=$_POST['exp'];
 
 
 $approve=mysqli_query($connection,"update lib.requests set approval_status='issued',issued_copies='$num', date_issued='$date', issued_by='$admin', expected_return_date='$exp' where requestid='$rqid'");
@@ -93,7 +95,7 @@ include("header.php");
  <div style="border: 1px solid ; background-color: rgba(255, 255, 255, 0.7);">    <br>      <br>  
   <center>  <a href="viewreq.php">GO BACK</a></center>
 <div class="alrt">
-    <p><?php echo $mesg ?></p><br>
+    <p><b><?php echo $mesg ?></b></p><br>
 <p>You are about to Issue 
 <u><?php
 $l=$gt['bookid'];

@@ -5,6 +5,7 @@ include("connection.php");
 
 
 
+include("exfix.php");
 
 function random_num($length)
 {

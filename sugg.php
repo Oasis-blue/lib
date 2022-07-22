@@ -7,6 +7,8 @@ if(!isset($_SESSION['user'])){
 
 
 }
+
+include("exfix.php");
 include("checkses.php");
 include("connection.php");
 $title=$_POST["title"];

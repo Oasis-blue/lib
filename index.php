@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+include("exfix.php");
 include("connection.php");
 include("logwork.php");
 

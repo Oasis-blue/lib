@@ -9,8 +9,9 @@ if(!isset($_SESSION['admin'])){
 
 }
 
+include("exfix.php");
 if($_GET["rqid"]!=""){
-    $_SESSION['rett']=$_GET["rqid"]!="";
+    $_SESSION['rett']=$_GET["rqid"];
 }
 
 if($_SESSION['rett']==""){
@@ -19,6 +20,7 @@ if($_SESSION['rett']==""){
 }
 include("connection.php");
 include("checkses.php");
+
 $rqid=$_SESSION['rett'];
 
 

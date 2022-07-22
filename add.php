@@ -9,7 +9,7 @@ if(!isset($_SESSION['admin'])){
 
 
 }
-
+include("exfix.php");
 include("checkses.php");
 $bottom2="";
 

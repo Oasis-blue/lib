@@ -3,6 +3,8 @@
 
 session_start();
 include("connection.php");
+
+include("exfix.php");
 if(
 $_POST["sugg"]!=""
 
@@ -13,6 +15,7 @@ $suerr="You need to be logged in to use this feature!";
     header("Location:sugg.php");}
     
     ;}
+    
 include("logwork.php");
 include("checkses.php");
 if(!isset($_SESSION['search'])){

@@ -10,6 +10,8 @@ if(!isset($_SESSION['user'])){
 
 if(!isset($_SESSION['search'])){
     header("Location:index.php");}
+    
+include("exfix.php");
     include("connection.php");
 
 if($_GET["rssn"]==""){

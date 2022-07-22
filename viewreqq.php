@@ -8,6 +8,8 @@ if(!isset($_SESSION['user'])){
 
 
 }
+
+include("exfix.php");
 include("connection.php");
 include("checkses.php");
 $userr=$_SESSION['user'];

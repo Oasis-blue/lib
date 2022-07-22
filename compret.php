@@ -8,6 +8,8 @@ if(!isset($_SESSION['admin'])){
 
 
 }
+
+include("exfix.php");
 if($_SESSION['rett']==""
 or
 $_SESSION["date"]=="" or

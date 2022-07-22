@@ -4,6 +4,7 @@ session_start();
 
 include("connection.php");
 
+include("exfix.php");
 
 
 if(isset($_SESSION['user'])){

@@ -8,6 +8,8 @@ if(!isset($_SESSION['admin'])){
 
 
 }
+
+include("exfix.php");
 if($_GET["rqid"]==""){
     header("Location:index.php");
 

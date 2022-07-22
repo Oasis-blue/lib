@@ -14,6 +14,7 @@ if(isset($_SESSION['user'])){
 
 }
 
+include("exfix.php");
 include("logwork.php");
 include("checkses.php");
 
