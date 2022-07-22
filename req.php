@@ -64,6 +64,13 @@ if($_POST["not"]!=""){
 }
 
 if($_POST["submit"]!=""){
+
+$checkif=mysqli_query($connection,"select * from lib.requests where requesterid='$useridd' and bookid='$bookid' and approval_status!='returned'");
+if(mysqli_num_rows($checkif)>0){
+    $suc="You cannot make a request for this resource at this time.<br>This is because you already made a request for this recource that has not been settled";
+
+
+}else{
     $tim=date("h:i:sa");
 $cop=$_POST["nocop"];
 $sendreq=mysqli_query($connection,"insert into lib.requests(requesterid, bookid, no_of_copies, date_of_req, approval_status,reqtime) values('$useridd','$bookid','$cop','$date','pending','$tim')");
@@ -76,6 +83,7 @@ if($sendreq==1){
     ';
 }else{$suc="failed to send request. please try again.";}
 
+}
 }
 
 
@@ -135,8 +143,8 @@ include("header.php");
 <a href="res.php">GO BACK</a>
 </center>
 <br>
-<center><p>
-<?php echo $suc ?>
+<center><p><b>!
+<?php echo $suc ?></b>
 </p></center>
 <br>
 

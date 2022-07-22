@@ -104,7 +104,7 @@ $lll=mysqli_fetch_array($ll);
 $book=$lll["title"];
 echo $book ?> </u>
 <br>
-Type:<?php 
+<b>Type:</b><?php 
 $lt=$lll["typeid"];
 $thh=mysqli_query($connection,"select * from lib.restype where typeid='$lt'");
 $thhh=mysqli_fetch_assoc($thh);
@@ -116,13 +116,13 @@ to user
 
 
 <br>
-<br>Request ID:<?php echo $rqid ?> </p>
+<br><b>Request ID:</b><?php echo $rqid ?> </p>
 
 </div>
 <div class="fm">
 <form method="POST">
-<p>Copies Requested: <?php echo $gt['no_of_copies'] ?></p>
-<p>Approved copies: <?php 
+<p><b>Copies Requested:</b> <?php echo $gt['no_of_copies'] ?></p>
+<p><b>Approved copies:</b> <?php 
 echo  $gt["issued_copies"]; ?>
 
 
@@ -142,7 +142,7 @@ if($gt["issued_copies"]<1){
 
 
 
-<p><label for="exp">Expected return date:</label>
+<p><label for="exp"><b>Expected return date:</b></label>
 
 <input type="date" name="exp" id="exp" class="date" required>
 <br>
