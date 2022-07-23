@@ -60,7 +60,7 @@ if( $fac == ""){
  $ffff="All faculties";
 }else{
   
-$ff= mysqli_query($connection, "SELECT * FROM lib.faculty where facid='$fac'");
+$ff= mysqli_query($connection, "SELECT * FROM lib.faculty where facid='$facc'");
 $fff=mysqli_fetch_assoc($ff);
 $ffff=$fff["faculty"];
 
@@ -117,8 +117,8 @@ include("resolution.php");
 <style>
 
 body{
- background-image:url("pho.jpg");
- background-size:contain;
+
+ 
  backdrop-filter:blur(6.07px);
 }
 

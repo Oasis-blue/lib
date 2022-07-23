@@ -7,24 +7,30 @@ if(!isset($_SESSION['admin'])){
 
 
 }
+if(!isset($_GET['id'])){
 
+   
+    header("Location:viewusers.php");
+
+
+}
 include("exfix.php");
 include("connection.php");
 include("checkses.php");
 
+$user=$_GET['id'];
+
+
 
 ?>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>View users</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
-
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details</title>
 </head>
 <?php
 include("resolu.php");
@@ -32,7 +38,8 @@ include("resolu.php");
 
 ?>
 <style>
-    #myInput, #myInputn {
+
+#myInput, #myInputn {
       box-sizing: border-box;
   background-image: url('searchicon.svg'); /* Add a search icon to input */
   background-position: 10px 12px; /* Position the search icon */
@@ -65,19 +72,38 @@ include("resolu.php");
   /* Add a grey background color to the table header and on hover */
   background-color: #f1f1f1;
 }
+
+center h1{
+ font-family:'Open Sans', sans-serif;}
+ 
+ /* Import Google Fonts */
 @import url("//fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
 
-/* Body */
-body{
- background-color:rgba(236,240,241,0.54);
-}
-
-/* Heading */
-center h1{
+/* Underline text tag */
+.dets h2 u{
  font-family:'Open Sans', sans-serif;
 }
 
-</style>
+/* Table */
+
+
+/* Dets */
+.dets{
+ display:flex;
+ align-content:center;
+ justify-content:center;
+ align-items:center;
+ flex-direction:column;
+}
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ </style>
 <script>
 function myFunctione() {
   // Declare variables
@@ -112,7 +138,7 @@ function myFunctionne() {
 
   // Loop through all table rows, and hide those who don't match the search query
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[1];
+    td = tr[i].getElementsByTagName("td")[4];
     if (td) {
       txtValue = td.textContent || td.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -126,48 +152,141 @@ function myFunctionne() {
 </script>
 
 <body>
-    <table width="100%"><?php
-    $bottom7='<a class="flink" href="viewusers.php"><b>View Users</b></a>';
-    include("header.php"); ?></table>
+   
+<table width="100%">
+<?php
 
+include("header.php");
 
+?>
 
+</table>  
+<hr style="color:black" >
 
-    <hr style="color:black" >
-
-    <div class="colo">
+<br>
+<div class="colo">
 <br>
 <center>
 <a href="index.php" style="color: white;">GO TO HOMEPAGE</a>
 </center>
 <br> </div>
-<center>
-<h1>Search Users by Name or User ID</h1>
-</center>
+
+<center><h1>User <?php
+
+echo $user;
+?></h1></center>
+<div class="dets">
+<center><h2><u>Personal Information</u>
+
+</h2></center>
+
+<table>
+<tr><th>ID</th>
+<td><?php echo $user ?></td>
+</tr>
+<tr>
+<th>Surname</th>
+<?php  $ge=mysqli_query($connection, "select * from lib.users where userid='$user'");
+$ud=mysqli_fetch_assoc($ge);
+?>
+<td><?php echo $ud["surname"]  ?></td>
+</tr>
+<tr>
+<th>First Name</th>
+
+<td><?php echo $ud["fname"]  ?></td>
 
 
-    
+</tr>
+</table>
 
-    <br>
-<input type="text" id="myInput" onkeyup="myFunctione()" placeholder="Search by User ID.."><br>
-<input type="text" id="myInputn" onkeyup="myFunctionne()" placeholder="Search by name..">
+
+</div>
+
+<div class="dets">
+<center><h2><u>Contact Information</u>
+
+</h2></center>
+
+<table >
+
+<tr>
+<th>E-mail</th>
+
+<td><?php echo $ud["email"]  ?></td>
+</tr>
+<tr>
+<th>Phone Number</th>
+
+<td><?php echo $ud["phonenumber"]  ?></td>
+
+
+</tr>
+</table>
+
+
+</div>
+<div class="dets">
+<center><h2><u>Requests</u>
+
+</h2></center>
+</div>
+
+<input type="text" id="myInput" onkeyup="myFunctione()" placeholder="Search by Request ID.."><br>
+<input type="text" id="myInputn" onkeyup="myFunctionne()" placeholder="Search by status..">
+<br>
 <table id="myTable" align="center">
   <tr class="header" >
-    <th style="width:40%;">User ID</th>
-    <th style="width:40%;">Full Name</th>
+    <th >Request ID</th>
+    <th >Resource ID</th>
+    <th>Date of request</th>
+    <th>Copies requested</th>
+    <th>Status</th>
+    <th></th>
     <th></th>
   </tr>
 
 <?php
 
-$getusers=mysqli_query($connection,"select * from lib.users");
-while($getda=mysqli_fetch_array($getusers)){
+$getreq=mysqli_query($connection,"select * from lib.requests where requesterid='$user'");
+while($getda=mysqli_fetch_array($getreq)){
 
 ?>
   <tr>
-    <td><?php  echo $getda["userid"]  ?></td>
-    <td><?php  echo $getda["surname"]  ?> <?php  echo $getda["fname"]  ?></td>
-    <td><?php  $r= $getda["userid"]; echo '<a href="userdetails.php?id='."$r".'">View</a>'; ?></td>
+    <td><?php  echo $getda["requestid"]  ?></td>
+    <td><?php  echo $getda["bookid"]  ?></td>
+    <td><?php  echo $getda["date_of_req"]  ?></td>
+    <td><?php  echo $getda["no_of_copies"]  ?></td>
+    <td><?php  echo $getda["approval_status"]  ?></td>
+
+   <?php  
+   if($getda["approval_status"]=="pending"){?>
+   
+   <td><a href="approve.php?rqid=<?php  echo  $getda['requestid']  ?>" class="apr">Approve</a></td>
+<td><a href="deny.php?rqid=<?php  echo  $getda['requestid']  ?>" class="deny">Deny</a></td> 
+
+<?php
+   }elseif($getda["approval_status"]=="approved"){
+?>
+
+<td><a href="issue.php?rqid=<?php  echo  $getda['requestid']  ?>" class="apr">Issue</a></td>
+<td><a href="revert.php?rqid=<?php  echo  $getda['requestid']  ?>" class="deny">Revert</a></td>
+
+
+<?php
+
+}elseif($getda["approval_status"]=="issued"){
+
+?>
+
+<td><a href="return.php?rqid=<?php  echo  $getda['requestid']  ?>" class="apr">Return</a></td>
+
+
+
+<?php
+}
+
+?>
   </tr>
   <?php
 
@@ -175,5 +294,6 @@ while($getda=mysqli_fetch_array($getusers)){
 ?>
 </table>
 <div style="min-height:80vh ;"></div>
+
 </body>
 </html>

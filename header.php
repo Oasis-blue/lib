@@ -1188,7 +1188,7 @@ window.onclick=function(event){if(event.target ==modal){mmm.style.display="none"
         <div class="up">
          
 
-
+        <?php if(isset( $bottom7 )){ echo $bottom7 ; }?>   
         <?php if(isset( $bottom4 )){ echo $bottom4 ; }?>   
         <?php if(isset( $bottom3)){ echo $bottom3 ;} ?>
 <?php if(isset($bottom1)){ echo $bottom1; } ?>
@@ -1198,7 +1198,7 @@ window.onclick=function(event){if(event.target ==modal){mmm.style.display="none"
       </td>
     </tr>
 
-    
+   
 
 
 

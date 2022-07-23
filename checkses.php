@@ -47,7 +47,7 @@ if(!isset($_SESSION['admin'])){
     
     
     
-    <a class="navlink"><button onclick="myFunction()" class="dropbtn">LOGIN</button></a>
+    <a class="navlink"><button onclick="myFunction()" class="dropbtn">USER LOGIN</button></a>
     
     <div id="myDropdown2" class="dropdown-content2">
     <form method="POST">
@@ -76,7 +76,7 @@ if(!isset($_SESSION['admin'])){
     $logout='<a class="flink"  href="logout.php">LOG OUT</a>';
     $bottom2='<a class="flink" href="add.php">Add a book</a>';
     $bottom3='<a class="flink" href="ret.php">Return a book</a>';
-
+    $bottom7='<a class="flink" href="viewusers.php">View Users</a>';
     $checksub=mysqli_query($connection, "select * from lib.sugg");
     if(mysqli_num_rows($checksub)>0){
     
