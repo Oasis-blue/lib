@@ -116,11 +116,6 @@ include("resolution.php");
 </head>
 <style>
 
-body{
-
- 
- backdrop-filter:blur(6.07px);
-}
 
 
 </style>

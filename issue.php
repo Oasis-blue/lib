@@ -93,7 +93,7 @@ include("header.php");
 <div class="alr">
  
  <div style="border: 1px solid ; background-color: rgba(255, 255, 255, 0.7);">    <br>      <br>  
-  <center>  <a href="viewreq.php">GO BACK</a></center>
+  <center>  <a href="<?php if($_SESSION["jskd"]=="yo"){ echo "viewusers.php";}else{ echo "viewreq.php";}?>">GO BACK</a></center>
 <div class="alrt">
     <p><b><?php echo $mesg ?></b></p><br>
 <p>You are about to Issue 

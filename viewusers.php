@@ -167,7 +167,7 @@ while($getda=mysqli_fetch_array($getusers)){
   <tr>
     <td><?php  echo $getda["userid"]  ?></td>
     <td><?php  echo $getda["surname"]  ?> <?php  echo $getda["fname"]  ?></td>
-    <td><?php  $r= $getda["userid"]; echo '<a href="userdetails.php?id='."$r".'">View</a>'; ?></td>
+    <td><?php  $r= $getda["userid"]; echo '<a href="userdetails.php?id='."$r".'">Details</a>'; ?></td>
   </tr>
   <?php
 

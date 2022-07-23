@@ -109,7 +109,7 @@ include("header.php");
  border-top-right-radius:50%;
  background-color:rgba(255,255,255,0.96) !important;
  border-style:none !important;">   <br>      <br> 
-  <center>  <a href="viewreq.php">GO BACK</a></center>
+  <center>  <a href="<?php if($_SESSION["jskd"]=="yo"){ echo "viewusers.php";}else{ echo "viewreq.php";}?>">GO BACK</a></center>
 <div class="alrt">
     <p><?php echo $mesg ?></p>
 <p>You are about to approve user 

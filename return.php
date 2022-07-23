@@ -104,8 +104,13 @@ include("header.php");
 <div style=" border-top-left-radius:49%;
  border-top-right-radius:50%;
  background-color:rgba(255,255,255,0.96) !important;
- border-style:none !important;">     <br>      <br> 
-  <center>  <a href="ret.php">GO BACK</a></center>
+ border-style:none !important;">     <br>      <br>
+ 
+ 
+  <center>  <a href="<?php if($_SESSION["jskd"]=="yo"){ echo "viewusers.php";}else{ echo"ret.php";}   ?>">GO BACK</a></center>
+
+
+
 <div class="alrt">
     <p><?php echo $mesg ?></p>
 <p>You are about to MAKE A RETURN for user 

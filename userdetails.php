@@ -20,7 +20,7 @@ include("checkses.php");
 
 $user=$_GET['id'];
 
-
+$_SESSION["jskd"]="yo";
 
 ?>
 
@@ -95,13 +95,59 @@ center h1{
  align-items:center;
  flex-direction:column;
 }
+.dets tr th{
+ text-align:left;
+ width: 50%;   padding: 12px 20px 12px 40px;
+}
+.dets tr td{ width: 50%;   padding: 12px 20px 12px 40px;}
+.grt tr {
+   background-color:  #bdc3c7;
 
+}
+ 
+ .grt{
+    min-width: 60%;
 
+    
+ }
  
  
- 
- 
- 
+/* Apr */
+.apr{
+
+ color:#27ae60;
+ background-color:#ecf0f1;
+}
+
+/* Deny */
+.deny{
+
+ background-color:#ecf0f1;
+ color:#e74c3c;
+}
+
+/* Deny (hover) */
+.deny:hover{
+    background-color:#e74c3c;
+ color:#ffffff;
+}
+
+/* Apr (hover) */
+.apr:hover{
+    background-color:#27ae60;
+ color:white;
+}
+
+ .apr, .deny{
+
+border-radius: 10px;
+   
+ padding-left:18px;
+ padding-right:18px;
+ padding-top:12px;
+ padding-bottom:12px;
+
+ }
  
  </style>
 <script>
@@ -169,8 +215,8 @@ include("header.php");
 <center>
 <a href="index.php" style="color: white;">GO TO HOMEPAGE</a>
 </center>
-<br> </div>
-
+<br> </div><br>
+<center><a href="viewusers.php">GO BACK</a></center>
 <center><h1>User <?php
 
 echo $user;
@@ -180,7 +226,7 @@ echo $user;
 
 </h2></center>
 
-<table>
+<table class="grt">
 <tr><th>ID</th>
 <td><?php echo $user ?></td>
 </tr>
@@ -208,7 +254,7 @@ $ud=mysqli_fetch_assoc($ge);
 
 </h2></center>
 
-<table >
+<table  class="grt">
 
 <tr>
 <th>E-mail</th>
@@ -234,13 +280,15 @@ $ud=mysqli_fetch_assoc($ge);
 
 <input type="text" id="myInput" onkeyup="myFunctione()" placeholder="Search by Request ID.."><br>
 <input type="text" id="myInputn" onkeyup="myFunctionne()" placeholder="Search by status..">
-<br>
+<br><div style="overflow-x:auto;">
 <table id="myTable" align="center">
   <tr class="header" >
     <th >Request ID</th>
     <th >Resource ID</th>
     <th>Date of request</th>
     <th>Copies requested</th>
+    <th>Copies issued</th>
+    <th>Copies returned</th>
     <th>Status</th>
     <th></th>
     <th></th>
@@ -257,6 +305,8 @@ while($getda=mysqli_fetch_array($getreq)){
     <td><?php  echo $getda["bookid"]  ?></td>
     <td><?php  echo $getda["date_of_req"]  ?></td>
     <td><?php  echo $getda["no_of_copies"]  ?></td>
+    <td><?php  echo $getda["issued_copies"]  ?></td>
+    <td><?php  echo $getda["no_of_copies_returned"]  ?></td>
     <td><?php  echo $getda["approval_status"]  ?></td>
 
    <?php  
@@ -292,7 +342,7 @@ while($getda=mysqli_fetch_array($getreq)){
 
 }
 ?>
-</table>
+</table></div>
 <div style="min-height:80vh ;"></div>
 
 </body>
