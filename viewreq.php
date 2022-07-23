@@ -14,7 +14,7 @@ include("checkses.php");
 
 $bottom1='<a class="flink" href=""><b>Pending Requests('.$count.')</b></a>';
 
-
+unset($_SESSION["jskd"]);
 
 
 ?>

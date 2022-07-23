@@ -8,7 +8,7 @@ if(!isset($_SESSION['admin'])){
 
 
 }
-
+unset($_SESSION["jskd"]);
 include("exfix.php");
 include("checkses.php");
 

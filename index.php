@@ -6,7 +6,7 @@ include("connection.php");
 include("logwork.php");
 
 include("checkses.php");
-
+unset($_SESSION["jskd"]);
 $selectfac = mysqli_query($connection, "SELECT * FROM lib.faculty");
 $selectdep = mysqli_query($connection, "SELECT * FROM lib.dept");
 
