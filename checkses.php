@@ -3,8 +3,8 @@
 include("exfix.php");
 include("connection.php");
 if(!isset($_SESSION['admin'])){
-  $getlibcard=' <li><a href="signup.php" class="navlink">REGISTER</a></li>';
-    $adlog='         <li>
+  $getlibcard=' <li class="item button secondary"><a href="signup.php" class="navlink">REGISTER</a></li>';
+    $adlog='         <li class="item button">
     
     
     <div class="dropdown3">
@@ -38,9 +38,9 @@ if(!isset($_SESSION['admin'])){
     
     
     if(!isset($_SESSION['user'])){
-      $getlibcard=' <li><a href="signup.php" class="navlink">REGISTER</a></li>';
+      $getlibcard=' <li class="item button secondary"><a href="signup.php" class="navlink">REGISTER</a></li>';
     $userlog='
-    <li>
+    <li class="item button">
     
     
     <div class="dropdown2">
@@ -72,8 +72,8 @@ if(!isset($_SESSION['admin'])){
     }
     
     if(isset($_SESSION['admin'])){
-        $vie='<a class="navlink" href="viewreq.php">REQUESTS</a>';
-    $logout='<a class="flink"  href="logout.php">LOG OUT</a>';
+        $vie='<li class="item"><a class="navlink" href="viewreq.php">REQUESTS</a></li>';
+    $logout='<li class="item"><a class="navlink"  href="logout.php">LOG OUT</a></li>';
     $bottom2='<a class="flink" href="add.php">Add a book</a>';
     $bottom3='<a class="flink" href="ret.php">Return a book</a>';
     $bottom7='<a class="flink" href="viewusers.php">View Users</a>';
@@ -116,11 +116,11 @@ $coun=count($c);
 
     }else{
 
-      $getlibcard=' <li><a href="signup.php" class="navlink">REGISTER</a></li>';
+      $getlibcard=' <li class="item"><a href="signup.php" class="navlink">REGISTER</a></li>';
     }
     
     if(isset($_SESSION['user'])){$adlog="";
-      $logout='<a class="flink"  href="logout.php">LOG OUT</a>';
+      $logout='<li class="item"><a class="navlink"  href="logout.php">LOG OUT</a></li>';
       $getlibcard="";
       //$reqm="";
       $user=$_SESSION['user'];
@@ -128,7 +128,7 @@ $coun=count($c);
       $count=mysqli_num_rows($goc);
       $bottom1='<a class="flink" href="viewreqq.php">My requests('.$count.')</a>';
      
-$reqq='  <li><a href="sugg.php" class="navlink">REQUEST AN ADDITION</a></li>';
+$reqq='  <li class="item"><a href="sugg.php" class="navlink">REQUEST AN ADDITION</a></li>';
 
 $checknot=mysqli_query($connection, "select * from lib.notreqs where userid='$user'");
 if(mysqli_num_rows($checknot)>0){

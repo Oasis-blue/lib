@@ -41,10 +41,9 @@ if(isset($_SESSION['user'])){
     <title>LOG IN</title>
 </head><style>
 body{
- background-image:url("https://images.unsplash.com/photo-1523240795612-9a054b0db644?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTc5fDB8MXxzZWFyY2h8N3x8ZSUyMGxpYnJhcnl8ZW58MHx8fHwxNjU4MjY3MzI0&ixlib=rb-1.2.1&q=80&w=2560");
+ background-image:url("5.jpg");
  background-size:auto;
- background-position-y:51%;
- background-position-x:49%;
+
 }
 
 

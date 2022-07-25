@@ -3,7 +3,22 @@
 include("exfix.php");
 
 ?>
+
+  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
+<script src="https://kit.fontawesome.com/106f5920d2.js" crossorigin="anonymous"></script>
 <style>
+
+@import url("//fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+*{
+  box-sizing: border-box;
+}
+body{
+  font-family: 'poppins';
+}
+
+
   /* Table Row (hover) */
 .doit tbody tr:hover{
  background-color:#bdc3c7;
@@ -92,44 +107,11 @@ include("exfix.php");
 }
 
 
-@media (max-width:523px){
 
-/* Division */
-table td .up{
- flex-direction:row;
- display:grid !important;
- align-content:center;
-}
 
-/* Division */
-table tbody .one td .up{
- grid-template-columns:auto 1fr !important;
-}
 
-}
 
-@media (max-width:498px){
 
-/* Division */
-table td .up{
- transform:translatex(0px) translatey(0px);
-}
-
-/* Link */
-table .up a{
- width:114px;
-}
-
-}
-
-@media (max-width:270px){
-
-/* Division */
-table td .up{
- row-gap:9px;
-}
-
-}
 /* Apr */
 .ab tr .apr{
  background-color:#27ae60;
@@ -344,14 +326,14 @@ center .nm .sugg:hover{
 /* Link */
 .colo center a{
  color:#5fe7de;
- font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;
+ font-family:'Poppins',sans-serif;
  text-decoration:underline;
 }
 
 /* Paragraph */
 .colo center p{
  color:#f1c40f;
- font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;
+ font-family:'Poppins'Arial,'Helvetica Neue',Helvetica,sans-serif;
 }
 
 
@@ -368,7 +350,7 @@ center .nm .sugg:hover{
 
 /* Table */
 .tbb{
- font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;
+ font-family:'Poppins',sans-serif;
  font-size:17px;
  transform:translatex(0px) translatey(0px);
 }
@@ -394,7 +376,7 @@ center .nm .sugg:hover{
 .holder .clicker{
 
 
- font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;
+ font-family:'Poppins',sans-serif;
  display:flex;
  justify-content:center;
  align-items:center;
@@ -404,14 +386,14 @@ center .nm .sugg:hover{
 .holder form .clicker{
  font-size:18px;
 
- font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;
+ font-family:'Poppins',sans-serif;
  display:flex;
  justify-content:center;
  align-items:center;
 
 }
 .clicker h1{
-  font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;
+  font-family:'Poppins',sans-serif;
 
 }
 
@@ -445,7 +427,7 @@ center .nm .sugg:hover{
 /* Label */
 .table .tr label{
  font-weight:600;
- font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;
+ font-family:'Poppins',sans-serif;
 }
 
 /* Fname */
@@ -515,9 +497,7 @@ center .nm .sugg:hover{
     height: 130vh;
   }
 
-  .one {
-    background-color: grey;
-  }
+
 
   .two {
     background-color: white;
@@ -610,20 +590,13 @@ $dis= array_rand($stories,1);?>
   /* Flink */
   .flink {
     text-decoration: none;
-    color: #ffffff;
-    font-family: 'TimesNewRoman';
+    color: #ffffff;  font-weight: 800;
+    font-family: 'Poppins';
     font-size: 1em;
     margin: 0 1rem;
   }
 
   /* Division */
-  .one td .up {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-
-  }
 
 
 /* Form Division */
@@ -662,38 +635,122 @@ $dis= array_rand($stories,1);?>
     color: #19ebdd;
   }
 
+
+/* Division */
+.up{
+ background-color:#176357;
+ display:flex;
+ justify-content:center;
+ overflow: auto;
+}
+
+@media (max-width:952px){
+
+/* Division */
+.up{
+ flex-direction:column;
+ display:grid !important;
+ grid-template-columns:auto 1fr 1fr !important;
+ align-content:center;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.toggle{
+  display: none;
+}
   .logo {
     width: 233px;
+    padding: 7.5px 10px 7.5px 0;
   }
+.item{
+padding: 10px;
+
+}
+
+
 
   a {
     text-decoration: none;
   }
 
   nav {
+   
+    background-color:#ecf0f1;
+    padding: 0 15px;
+  }
+
+.menu {
     display: flex;
+    list-style-type: none;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
   }
+  @media (max-width:1044px){
 
-  nav ul {
-    display: flex;
-    list-style-type: none;
-  }
+/* New created breakpoint. */
+.toggle{
+  display: block;
+}
 
-  nav ul li {
-    margin: 0 1rem;
-  }
+ .menu li a{
+  display: block;
+  padding: 15px 5px;
+ }
+.toggle{
+  order: 1;
+  font-size: 20px;
+}
+
+.item.button{
+  order: 2;
+}
+.item{
+  order: 3;
+  width: 100%;
+  text-align: center;
+  display: none;
+}
+.active .item{
+
+ display: block;
+}
+
+.button.secondary{
+  border-bottom: 1px black solid;
+}}
 
   .navlink {
-
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
     color: black;
   }
 
   .navlink:hover {
-    background-color: black;
-    color: white;
+    background-color:#c1bdbd;
+ border-top-left-radius:12px;
+ border-top-right-radius:12px;
+ border-bottom-left-radius:12px;
+ border-bottom-right-radius:12px;
+
   }
 
 
@@ -713,19 +770,20 @@ $dis= array_rand($stories,1);?>
 
   /* Input */
   .tabb tbody .se td .sear input[type=text] {
+    height: 31px;
     width: 30% !important;
   }
 
   /* SearchUnknown */
   .searchselect {
     height: 33px;
-    width: 5% !important;
+    width: 5%!important;
     font-size: 16px;
   }
 
   /* Label */
   .se td label {
-    font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;
+    font-family: 'Poppins';
     margin-left: 19px;
   }
 
@@ -733,7 +791,7 @@ $dis= array_rand($stories,1);?>
   .se td .searchbtn {
     background-color: #f3fd29;
     border-style: none;
-    height: 31px;
+    height: 29px;
     cursor: pointer;
   }
 
@@ -778,10 +836,17 @@ $dis= array_rand($stories,1);?>
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
   }
+/* Show */
+.menu li .show{
+ flex-direction:column;
+ padding-left:13px;
+ padding-right:11px;
+}
+
 
   /* Links inside the dropdown */
   .dropdown-content a {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     color: black;
     padding: 12px 16px;
     text-decoration: none;
@@ -800,8 +865,21 @@ $dis= array_rand($stories,1);?>
 
   /* Change the background color of the dropdown button when the dropdown content is shown */
   .dropdown:hover .navlink {
-    background-color: black;
-    color: white;
+    background-color:#c1bdbd;
+ border-top-left-radius:12px;
+ border-top-right-radius:12px;
+ border-bottom-left-radius:12px;
+ border-bottom-right-radius:12px;
+ 
+  }
+
+  nav .menu .item:hover{
+
+    background-color:#c1bdbd;
+ border-top-left-radius:12px;
+ border-top-right-radius:12px;
+ border-bottom-left-radius:12px;
+ border-bottom-right-radius:12px;
   }
 
   /* Import Google Fonts */
@@ -810,10 +888,10 @@ $dis= array_rand($stories,1);?>
   /* Paragraph */
   .qu {
     text-align: center;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Poppins', serif;
     font-size: 19px;
     margin-top: 0px;
-    margin-bottom: -14px;
+    margin-bottom: -14px;  font-weight: 800;
   }
 
   .dropdown2 {
@@ -831,11 +909,11 @@ $dis= array_rand($stories,1);?>
   }
 
   .dropbtn {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     background: none;
     color: black;
     padding: 1px;
-    font-size: 16px;
+    font-size: 16px;  font-weight: 800;
     border: none;
     cursor: pointer;
   }
@@ -843,7 +921,12 @@ $dis= array_rand($stories,1);?>
   /* Dropdown button on hover & focus */
   .dropbtn:hover,
   .dropbtn:focus {
-    background-color: #2980B9;
+    background-color:#c1bdbd;
+ border-top-left-radius:12px;
+ border-top-right-radius:12px;
+ border-bottom-left-radius:12px;
+ border-bottom-right-radius:12px;
+
   }
 
   .show {
@@ -856,7 +939,7 @@ $dis= array_rand($stories,1);?>
 
     justify-content: center;
     font-size: 1em;
-    font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 600;
   }
 
@@ -878,6 +961,13 @@ $dis= array_rand($stories,1);?>
 #bbbc{
  width:45% !important;
 }
+/* Show */
+.menu li .show3{
+ flex-direction:column;
+ padding-left:13px;
+ padding-right:11px;
+}
+
 
 
   /* Form Division */
@@ -923,8 +1013,8 @@ $dis= array_rand($stories,1);?>
   }
 
   .dropbtn3 {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background: none;
+    font-family: 'Poppins', sans-serif;
+    background: none;  font-weight: 800;
     color: black;
     padding: 1px;
     font-size: 16px;
@@ -935,7 +1025,15 @@ $dis= array_rand($stories,1);?>
   /* Dropdown button on hover & focus */
   .dropbtn3:hover,
   .dropbtn3:focus {
-    background-color: #2980B9;
+    background-color:#c1bdbd;
+ border-top-left-radius:12px;
+ border-top-right-radius:12px;
+ border-bottom-left-radius:12px;
+ border-bottom-right-radius:12px;
+ padding-left:5px;
+ padding-right:5px;
+ padding-top:2px;
+ padding-bottom:2px;;
   }
 
   .show3 {
@@ -966,7 +1064,7 @@ $dis= array_rand($stories,1);?>
 
   /* Form Division */
   .dropdown3 form {
-    height: 189px;
+    
     position: relative;
     top: 2em;
   }
@@ -1009,8 +1107,8 @@ $dis= array_rand($stories,1);?>
 
   
 </style>
+<link rel="stylesheet" href="cdnjs.cloudfare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
 <script>
-
 
 
   function myFunction() {
@@ -1060,12 +1158,9 @@ window.onclick=function(event){if(event.target ==modal){mmm.style.display="none"
 
   </script>
 
-<tr height="5%" class="one">
-      <td>
+        
+         
 
-        <div class="up">
-          <a class="flink" href="">HELP</a>
-<?php echo $logout ?>
     <!--  <div class="dropdown2">
 
 
@@ -1098,20 +1193,17 @@ window.onclick=function(event){if(event.target ==modal){mmm.style.display="none"
           </div>
 -->
 
-        </div>
+      
 
-      </td>
-    </tr>
+     
     
 
 
-    <tr height="10%" class="two">
-      <td>
         <nav>
-          <a href="index.php"> <img class="logo" src="logoo.png"></a>
-          <ul>
-
-
+          
+          <ul class="menu">
+<li><a href="index.php"> <img class="logo" src="logoo.png"></a></li>
+          <?php echo $logout ?>
  <?php echo $adlog; echo $vie; ?>
 
 
@@ -1125,10 +1217,10 @@ window.onclick=function(event){if(event.target ==modal){mmm.style.display="none"
            <?php echo $getlibcard; ?>
 
 
-            <li>
+            <li class="item has-submenu">
 
               <div class="dropdown">
-                <a href="" class="navlink">BOOKS</a>
+                <a tabindex="0" class="navlink">BOOKS</a>
                 <div class="dropdown-content">
                   <a href="">TEXTBOOKS</a>
                   <a href="">AUDIOBOOKS</a>
@@ -1142,10 +1234,10 @@ window.onclick=function(event){if(event.target ==modal){mmm.style.display="none"
 
             </li>
 
-            <li>
+            <li class="item has-submenu">
 
 <div class="dropdown">
-  <a href="" class="navlink">OTHER RESOURCES</a>
+  <a  class="navlink">OTHER RESOURCES</a>
   <div class="dropdown-content">
     <a href="">ARTICLES/JOURNALS</a>
     <a href="">ONGOING RESEARCH</a>
@@ -1159,9 +1251,9 @@ window.onclick=function(event){if(event.target ==modal){mmm.style.display="none"
 
 </li>
 
-            <li><a href="" class="navlink">VIDEOS</a></li>
+<li class="item"><a href="" class="navlink">VIDEOS</a></li>
 
-            <li><a href="" class="navlink">AUTHORS</a></li>
+<li class="item"><a href="" class="navlink">AUTHORS</a></li>
 
 
 
@@ -1169,21 +1261,18 @@ window.onclick=function(event){if(event.target ==modal){mmm.style.display="none"
           <?php echo $reqq ?>
 
 
-
+          <li class="toggle"><a href="#"><i class="fas fa-bars"></i><!--&#9776;--></a></li>
 
 
           </ul>
 
         </nav>
    
-      </td>
-
-    </tr>
+     
 
 
 
-    <tr height="5%" class="one">
-      <td>
+
 
         <div class="up">
          
@@ -1195,15 +1284,13 @@ window.onclick=function(event){if(event.target ==modal){mmm.style.display="none"
 <?php if(isset( $bottom2)){ echo $bottom2; } ?>
 <?php if(isset($notif)){ echo $notif ;} ?>
         </div>
-      </td>
-    </tr>
-
+    
    
 
 
 
-
-
+	
+        <script src="script.js"></script>
 
 
 
