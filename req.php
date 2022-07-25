@@ -8,8 +8,8 @@ if(!isset($_SESSION['user'])){
 
 }
 
-if(!isset($_SESSION['search'])){
-    header("Location:index.php");}
+//if(!isset($_SESSION['search'])){
+  //  header("Location:index.php");}
     
 include("exfix.php");
     include("connection.php");
@@ -143,12 +143,12 @@ include("header.php");
 <a href="res.php">GO BACK</a>
 </center>
 <br>
-<center><p><b>!
+<center><p><b>
 <?php echo $suc ?></b>
 </p></center>
 <br>
 
-<div class="holder">
+<div class="holder" style="">
   <center>  <div class="y">
 <div class="clicker">
 
