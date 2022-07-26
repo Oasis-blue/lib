@@ -61,7 +61,7 @@ include("header.php");
 <br>
 
 
-<br>
+<br><div style="overflow-x:auto;">
 <table class="tbb" align="center" width="90%" cellpadding="4%">
 
 <tr class="frow">
@@ -164,7 +164,9 @@ echo $reqm;
 </tr>
 <?php } }?>
 </table>
+</div>
 
+<div style="min-height:80vh ;"></div>
 
 
 
