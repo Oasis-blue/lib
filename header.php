@@ -8,7 +8,186 @@ include("exfix.php");
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
 <script src="https://kit.fontawesome.com/106f5920d2.js" crossorigin="anonymous"></script>
 <style>
+@media (max-width:997px){
 
+/* Division */
+.bc{
+ overflow:auto;
+ flex-wrap:wrap;
+}
+
+}
+
+@media (max-width:640px){
+
+/* Paragraph */
+.bc p{
+ align-self:flex-start;
+}
+
+}
+@media (max-width:1044px){
+
+/* Division */
+.up{
+ align-items:center;
+ flex-wrap:wrap;
+ justify-content:space-between !important;
+}
+
+}
+
+@media (max-width:903px){
+
+/* Division */
+.up{
+ justify-content:space-around !important;
+}
+
+}
+
+@media (max-width:828px){
+
+/* Division */
+.up{
+ flex-wrap:nowrap;
+}
+
+}
+
+@media (max-width:700px){
+
+/* Division */
+.up{
+ display:grid !important;
+ align-content:center;
+ grid-template-columns:auto 1fr 1fr !important;
+ justify-content:normal !important;
+}
+
+}
+
+@media (max-width:561px){
+
+/* Division */
+.up{
+ display:inline-grid;
+ transform:translatex(0px) translatey(0px);
+ justify-content:center !important;
+ grid-template-columns:1fr 1fr 1fr !important;
+ grid-template-rows:auto 1fr !important;
+}
+
+}
+
+@media (max-width:487px){
+
+/* New created breakpoint. */
+
+}
+
+@media (max-width:474px){
+
+/* Division */
+.up{
+ display:flex !important;
+ justify-content:normal !important;
+ transform:translatex(0px) translatey(0px);
+}
+
+}
+
+@media (max-width:471px){
+
+/* New created breakpoint. */
+
+}
+
+@media (max-width:458px){
+
+/* Division */
+.up{
+ flex-direction:column;
+ align-items:center;
+ display:grid !important;
+ align-content:space-around;
+ justify-content:space-around !important;
+ grid-template-rows:1fr !important;
+ grid-template-columns:1fr 1fr;
+}
+
+}
+
+@media (max-width:440px){
+
+/* Division */
+.up{
+ display:flex !important;
+ justify-content:space-between !important;
+ align-items:flex-end;
+}
+
+}
+
+@media (max-width:390px){
+
+/* Division */
+.up{
+ align-items:center;
+}
+
+}
+
+@media (max-width:372px){
+
+/* Division */
+.up{
+ display:flex !important;
+}
+
+}
+
+@media (max-width:762px){
+
+ /* Division */
+ .up{
+  flex-wrap:wrap !important;
+ }
+ 
+}
+
+@media (max-width:660px){
+
+ /* Form Division */
+ .gen div form{
+  flex-direction:column;
+ }
+ 
+}
+
+@media (max-width:440px){
+
+ /* Division */
+ .up{
+  flex-wrap:nowrap !important;
+ }
+ 
+}
+
+@media (max-width:421px){
+
+ /* Logo */
+ .menu a img{
+  width:195px;
+ }
+ 
+}
+
+@media (max-width:331px){
+
+ /* New created breakpoint. */
+ 
+}
 @import url("//fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
 
 *{
@@ -108,6 +287,22 @@ body{
 
 
 
+.ab {
+  border-collapse: collapse; /* Collapse borders */
+  width: 100%; /* Full-width */
+  border: 1px solid #ddd; /* Add a grey border */
+  font-size: 18px; /* Increase font-size */
+}
+
+.ab th, .ab td {
+
+  padding: 12px; /* Add padding */
+}
+
+.ab tr {
+  /* Add a bottom border to all table rows */
+  border-bottom: 1px solid #ddd;
+}
 
 
 
@@ -163,18 +358,10 @@ body{
 }
 
 /* Table Data */
-.ab tr td{
- border-style:dotted;
- border-width:1px;
-}
+
 
 /* Th */
-.ab tr th{
- border-right-style:dotted;
- border-right-width:1px;
- border-left-style:dotted;
- border-left-width:1px;
-}
+
 
 /* Link */
 .ab tr a{
@@ -308,10 +495,55 @@ center .nm .sugg:hover{
 }
 
 
+
+.y form .reqrad{
+ padding-left:12px;
+ padding-right:12px;
+ padding-top:12px;
+ padding-bottom:12px;
+cursor: not-allowed;
+ font-size:16px;
+background-color: #f0f0f0;
+}
+
+
+
+
+
+/* Reqr */
+.y form .reqr{
+ padding-left:12px;
+ padding-right:12px;
+ padding-top:12px;
+ padding-bottom:12px;
+ border-width:2px;
+ border-style:solid;
+ border-color:#34b61a;
+ font-size:16px;
+ border-top-left-radius:5px;
+ border-top-right-radius:5px;
+ border-bottom-left-radius:5px;
+ border-bottom-right-radius:5px;
+ background-color:#27ae60;
+ color:#ffffff;
+ cursor: pointer;
+}
+/* Reqr (hover) */
+.y form .reqr:hover{
+ background-color:rgba(46,204,113,0.84);
+}
+
+
+/* Division */
+.holder center .y{
+ background-color:rgba(31,219,223,0.38);
+ background-image:none;
+}
+
+
 /* Division */
 .holder .y{
- background-color:rgba(2,88,89,0.38);
- background-image:linear-gradient(to right, #f0f2f0 0%, #000c40 100%);
+
  width:50%;
  border-top-right-radius:22%;
  border-bottom-left-radius:22%;
@@ -644,17 +876,6 @@ $dis= array_rand($stories,1);?>
  overflow: auto;
 }
 
-@media (max-width:952px){
-
-/* Division */
-.up{
- flex-direction:column;
- display:grid !important;
- grid-template-columns:auto 1fr 1fr !important;
- align-content:center;
-}
-
-}
 
 
 

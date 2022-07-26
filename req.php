@@ -67,7 +67,7 @@ if($_POST["submit"]!=""){
 
 $checkif=mysqli_query($connection,"select * from lib.requests where requesterid='$useridd' and bookid='$bookid' and approval_status!='returned'");
 if(mysqli_num_rows($checkif)>0){
-    $suc="You cannot make a request for this resource at this time.<br>This is because you already made a request for this recource that has not been settled";
+    $suc="<span style='color:red'>You cannot make a request for this resource at this time.<br>This is because you already made a request for this recource that has not been settled</span>";
 
 
 }else{
@@ -77,15 +77,67 @@ $sendreq=mysqli_query($connection,"insert into lib.requests(requesterid, bookid,
 
 
 if($sendreq==1){
-    $suc='Request sent successfully. Your request will be attended to shortly
+    $suc='<span style="color:green">Request sent successfully. Your request will be attended to shortly
     <br>
-    Please note that your request can only be approved on working days and requests are accepted on a first come first serve basis.<br><a href="index.php">Go to homepage</a>
+    Please note that your request can only be approved on working days and requests are accepted on a first come first serve basis.</span><br><a href="index.php">Go to homepage</a>
     ';
-}else{$suc="failed to send request. please try again.";}
+}else{$suc="<span style='color:red'>failed to send request. please try again.</span>";}
 
 }
 }
+if($_POST["download"]!=""){
 
+    $qq=mysqli_query($connection, "SELECT * FROM lib.reqdown where contentid='$bookid' and userid='$useridd' limit 1");
+if(mysqli_num_rows($qq)>0){
+$qqd=mysqli_fetch_assoc($qq);
+$reid=$qqd['reid'];
+$appby=$qqd['approvedby'];
+$wwd=mysqli_query($connection,"INSERT INTO lib.requests (requesterid, bookid, date_of_req, approval_status,reqtime, approved_by) values('$useridd','$bookid','$date','downloaded','$tim', '$appby')");
+$erf=mysqli_query($connection,"DELETE FROM lib.reqdown where reid='$reid'");
+
+}else{
+
+    $wwd=mysqli_query($connection,"INSERT INTO lib.requests (requesterid, bookid, date_of_req, approval_status,reqtime) values('$useridd','$bookid','$date','downloaded','$tim')");
+
+
+
+}
+
+
+
+
+
+
+
+}
+
+
+if($_POST['reqqd']!=""){
+
+$zgsd=mysqli_query($connection, "SELECT * FROM lib.reqdown where contentid='$bookid' and userid='$useridd' and access!='granted'");
+
+if(mysqli_num_rows($zgsd)>0){
+
+    $suc="<span style='color:red'>You cannot make request to access this file at this time.<br>This is because you still have a pending request for it.</span>";
+
+}else{
+
+$afa=mysqli_query($connection, "INSERT INTO lib.reqdown (contentid, date, userid) values('$bookid','$date','$useridd')");
+
+if($afa==1){
+    $suc='<span style="color:green">Request sent successfully. Your request will be attended to shortly</span>';
+
+}else{
+
+    $suc="<span style='color:red'>failed to send request. please try again.</span>"; 
+}
+
+}
+
+
+
+
+}
 
 
 
@@ -113,8 +165,33 @@ if($sendreq==1){
     <title>Request </title>
 
     <style>/* Body */
+
+  /* Body */
 body{
-    background-color:rgba(250,249,249,0.89);}
+ background-color:#ecf0f1;
+}
+
+/* Reqra */
+.y form .reqra{
+ padding-left:12px;
+ padding-right:12px;
+ padding-top:6px;
+ padding-bottom:6px;
+ background-color:#27ae60;
+ border-top-left-radius:10px;
+ border-top-right-radius:10px;
+ border-bottom-left-radius:10px;
+ border-bottom-right-radius:10px;
+ border-color:#27ae60;
+ font-size: 16px;
+ cursor: pointer;
+}
+
+
+.y form .reqra:hover{
+background-color: mediumseagreen;
+
+}
 
 </style>
 </head>
@@ -148,7 +225,7 @@ include("header.php");
 </p></center>
 <br>
 
-<div class="holder" style="">
+<div class="holder" >
   <center>  <div class="y">
 <div class="clicker">
 
@@ -169,6 +246,112 @@ include("header.php");
 
 </div>
 
+
+<?php
+
+if($ret["matinfo"]=="softcopy"){
+
+
+
+if($ret["catid"]=="pri"){
+
+
+$checkaccess=mysqli_query($connection,"select * from lib.reqdown where contentid='$bookid' and userid='$useridd' and access='granted'")
+;
+
+if(mysqli_num_rows($checkaccess)>0){
+?>
+
+
+
+<form method="POST">
+
+<h3>You have been granted access to this content.</h3>
+
+
+
+
+<div class="clicker"><a class="" href="upload/<?php echo $ret['link']?>" target="_blank"  onclick="fdd()"><button type="button" class="reqr">Download</button></a>
+</div>
+<input type="submit" hidden  name="download" id="myCheck">
+<script>
+function fdd() {
+  document.getElementById("myCheck").click();
+}
+</script>
+
+</form>
+
+<br><br>
+</div>
+
+
+
+
+
+
+    <?php
+}else{
+
+
+
+?>
+
+
+
+
+<form method="POST">
+
+
+<div class="clicker"><button type="submit" disabled class="reqrad"  >Download</button>
+</div>
+
+
+<h3>This is a Material is labelled private,<br> you can request access to download below</h3>
+
+<div class="clicker"><button type="submit" name="reqqd" class="reqra"  value="reqqd">Request Access</button>
+</div>
+
+
+
+</form>
+
+<br><br>
+</div>
+
+
+
+
+<?php
+}
+}else{
+
+
+?>
+
+<form method="POST">
+
+
+<div class="clicker"><a class="" href="upload/<?php echo $ret['link']?>" target="_blank"  onclick="fdd()"><button type="button" class="reqr">Download</button></a>
+</div>
+<input type="submit" hidden  name="download" id="myCheck">
+<script>
+function fdd() {
+  document.getElementById("myCheck").click();
+}
+</script>
+
+</form>
+
+<br><br>
+</div>
+
+
+
+<?php
+}
+}else{
+?>
 
 <div class="clicker">
 
@@ -197,6 +380,14 @@ include("header.php");
 
 </div>
 <br>
+
+<?php
+
+}
+
+
+
+?>
 <br>
 <br>
 <div style="min-height: 50vh; "></div>

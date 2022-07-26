@@ -87,8 +87,10 @@ if(!isset($_SESSION['admin'])){
     $bottom4='<a class="flink" href="suggs.php">Suggestions('.$counn.')</a>';
 
     $goc=mysqli_query($connection,"select * from lib.requests where approval_status='pending'");
+    $gofc=mysqli_query($connection,"select * from lib.reqdown where access!='granted'");
     $count=mysqli_num_rows($goc);
-    $bottom1='<a class="flink" href="viewreq.php?sts=pending">View pending requests('.$count.')</a>';
+    $countvc=mysqli_num_rows($goc)+mysqli_num_rows($gofc);
+    $bottom1='<a class="flink" href="viewreq.php?sts=pending">View pending requests('.$countvc.')</a>';
 
     $reqm='<a class="view" target="_blank" href='.'upload'."\"".$getdata3['link']." >View</a>";
 $userlog="";

@@ -139,7 +139,7 @@ while($getda=mysqli_fetch_array($getusers)){
 
 
 
-    <td><?php  $r= $getda["userid"]; echo '<a href="removesugg.php?id='."$r".'">Remove</a>'; ?></td>
+    <td><?php  $r= $getda["id"]; echo '<a href="removesugg.php?id='."$r".'">Remove</a>'; ?></td>
   </tr>
   <?php
 

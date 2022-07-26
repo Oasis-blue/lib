@@ -12,7 +12,7 @@ include("exfix.php");
 include("connection.php");
 include("checkses.php");
 
-$bottom1='<a class="flink" href=""><b>Pending Requests('.$count.')</b></a>';
+$bottom1='<a class="flink" href=""><b>Pending Requests('.$countvc.')</b></a>';
 
 unset($_SESSION["jskd"]);
 
@@ -129,8 +129,80 @@ echo $bookav ?>
 
 </div>
 
+<hr>
+<?php
+
+$gofffff=mysqli_query($connection,"select * from lib.reqdown where access!='granted'");
+$erree=mysqli_num_rows($gofffff);
+
+?>
+
+<div class="bc">
+<p><b><u><?php echo "Download Requests($erree) "; ?></u></b></p>
+
+<div class="cb">
+
+<?php 
+
+if($erree>0){
+?>
+<table class="ab"><tr>
+   
+    <th>UserID</th>
+    <th>Content ID</th>
+ <th>Title</th>
+    <th>Date of request</th>
+    <th></th>
+
+    </tr>
+<?php
+while($ggfo=mysqli_fetch_array($gofffff)){
 
 
+?>
+
+<tr>
+<td><?php echo $ggfo['userid'] ?> </td>
+<td><?php echo $ggfo['contentid'] ?> </td>
+<td><?php
+$lgr=$ggfo['contentid'];
+$llgr=mysqli_query($connection,"select * from lib.content where contentid='$lgr'");
+$lllgr=mysqli_fetch_array($llgr);
+echo $lllgr["title"];
+  ?> 
+
+
+</td>
+<td><?php echo $ggfo['date'] ?> </td>
+
+<td><a href="grant.php?reid=<?php  echo  $ggfo['reid']  ?>" class="apr">Grant access</a></td>
+
+
+</tr>
+
+
+<?php
+
+}
+?>
+
+</table>
+
+<?php
+}
+?>
+
+
+
+
+
+</div>
+
+
+
+</div>
+
+<hr>
 
 
 
@@ -213,9 +285,9 @@ echo $gco["issued_copies"] ?>
 
 
 </div>
+<hr>
 
-
-
+<div style="min-height:80vh ;"></div>
 
 
 

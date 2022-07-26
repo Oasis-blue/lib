@@ -45,7 +45,7 @@ $facid=$_POST['fac'];
 $tag1=$_POST['tag1'];
 $tag2=$_POST['tag2'];
 $tag3=$_POST['tag3'];
-
+$matinfo=$_POST['matinfo'];
 $deptid=$_POST['dep'];
 $typeid=$_POST['type'];
 $yearofpub=$_POST['year'];
@@ -72,8 +72,8 @@ if($tag1==$tag3 && $tag1==$tag2){
 //$seekdoub=mysqli_query($connection, "select ")
 
 
-            $sql = "INSERT INTO lib.content (title, author, courseid, facid, deptid, typeid, tags, description, yearofpub, link, classid, catid, copies) 
-            VALUES ('$title','$author','$courseid','$facid','$deptid','$typeid','$tags','$description','$yearofpub','$filename','$class','$cate','$copies')";
+            $sql = "INSERT INTO lib.content (title, author, courseid, facid, deptid, typeid, tags, description, yearofpub, link, classid, catid, copies, matinfo) 
+            VALUES ('$title','$author','$courseid','$facid','$deptid','$typeid','$tags','$description','$yearofpub','$filename','$class','$cate','$copies', '$matinfo')";
             $res=mysqli_query($connection, $sql);
             if ($res==1) {
 $checktag1=mysqli_query($conn,"select * from keywords where tag='$tag1'");
@@ -359,6 +359,19 @@ include("header.php");
 
 <input type="file" name="myfile"><br>
 
+<select name="matinfo">
+
+
+
+
+
+
+<option value="hardcopy">Hard Copy</option>
+
+<option value="softcopy">Soft Copy</option>
+
+
+</select><br>
 <label for="type">Type:</label>
 <select name="type" id="type">
 <?php $select=mysqli_query($connection, "SELECT * FROM lib.restype");
@@ -450,7 +463,6 @@ while($cla=mysqli_fetch_array($selectcl)){ ?>
 
 
 </select>
-
 
 
 <br>
