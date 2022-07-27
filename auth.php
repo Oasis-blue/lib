@@ -32,7 +32,7 @@ $ch3ck=mysqli_query($connection,"select * from lib.users where userid='$userid'"
 if(mysqli_num_rows($ch3ck)>0){
     $userid=random_num(5);
 }
-$signupgo=mysqli_query($connection,"insert into lib.users(userid, fname, surname, email, phonenumber, pin) values('$userid','$fname','$sname','$email','$phone','$pin')");
+$signupgo=mysqli_query($connection,"insert into lib.users(userid, fname, surname, email, phonenumber, pin, status) values('$userid','$fname','$sname','$email','$phone','$pin', '1')");
 if($signupgo==1){
     $mssg="signup successful, your library ID is <u>$userid</u>."
     .'<br>You will need this to Log in.<br><a href="log.php">Login here</a>';

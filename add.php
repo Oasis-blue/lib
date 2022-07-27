@@ -54,6 +54,31 @@ $class=$_POST['class'];
 $cate=$_POST['cat'];
 $copies=$_POST['copies'];
 
+$checkauthor=mysqli_query($connection,"select * from lib.authors where author='$author'");
+if(mysqli_num_rows($checkauthor)>0){
+    $r=mysqli_fetch_assoc($checkauthor);
+    $authid=$r['authid'];
+}
+
+
+
+if(mysqli_num_rows($checkauthor)<1){
+
+$sendauth=mysqli_query($connection, "INSERT INTO lib.authors (author) values('$author')");
+if($sendauth==1){
+$checkauthor2=mysqli_query($connection,"select * from lib.authors where author='$author'");
+}
+
+    $r2=mysqli_fetch_assoc($checkauthor2);
+    $authid=$r2['authid'];
+}
+
+
+
+
+
+
+
 
             $tags=$tag1." ".$tag2." ".$tag3;
 if($tag1==$tag2){
@@ -72,8 +97,8 @@ if($tag1==$tag3 && $tag1==$tag2){
 //$seekdoub=mysqli_query($connection, "select ")
 
 
-            $sql = "INSERT INTO lib.content (title, author, courseid, facid, deptid, typeid, tags, description, yearofpub, link, classid, catid, copies, matinfo) 
-            VALUES ('$title','$author','$courseid','$facid','$deptid','$typeid','$tags','$description','$yearofpub','$filename','$class','$cate','$copies', '$matinfo')";
+            $sql = "INSERT INTO lib.content (title, author, authid, courseid, facid, deptid, typeid, tags, description, yearofpub, link, classid, catid, copies, matinfo) 
+            VALUES ('$title','$author','$authid','$courseid','$facid','$deptid','$typeid','$tags','$description','$yearofpub','$filename','$class','$cate','$copies', '$matinfo')";
             $res=mysqli_query($connection, $sql);
             if ($res==1) {
 $checktag1=mysqli_query($conn,"select * from keywords where tag='$tag1'");
@@ -88,7 +113,7 @@ if(mysqli_num_rows($checktag1)<1){
                 $checktag3=mysqli_query($conn,"select * from keywords where tag='$tag3'");
 if(mysqli_num_rows($checktag3)<1){
                 $sqlll=mysqli_query($conn,"insert into lib.keywords (tag) values ('$tag3')");}
-                echo "File uploaded successfully";
+                $succ="File uploaded successfully";
             }
      //   } else {
             //echo "Failed to upload file.";
@@ -351,6 +376,7 @@ include("header.php");
 <br>
 <center>
 <a href="index.php" style="color: white;">GO TO HOMEPAGE</a>
+<?php echo "<br>$succ"  ?>
 </center>
 <br> </div>
 <br>
@@ -384,10 +410,23 @@ while($gettype=mysqli_fetch_array($select)){
 </select>
 <br>
 <label for="title">Title:</label>
-<input type="text" id="title" name="title" placeholder="enter the title of the document/resource">
+<input type="text" id="title" name="title" placeholder="enter the title of the document/resource" required>
 <br>
 <label for="author">Author:</label>
-<input type="text" id="author" name="author" placeholder="enter the name of author(s) or patents of the document/resource">
+<input type="text" id="author" name="author" placeholder="enter the name of author(s) or patents of the document/resource" list="authors">
+
+<datalist id="authors">
+    <?php
+$selecttrr=mysqli_query($connection, "SELECT * FROM lib.authors");
+while($trr=mysqli_fetch_array($selecttrr)){
+?>
+<option value="<?php echo $trr["author"]; ?>">
+<?php
+}
+?>
+
+</datalist>
+
 <br>
 
 <label for="year">Year of Publicaction:</label>

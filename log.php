@@ -72,8 +72,21 @@ include("header.php");
     <h1 align="center">Please log in to continue</h1>
 
 <br><center>
+    <?php
+
+if(isset($_SESSION['search'])){
+
+?>
 <a href="res.php">Go back to search results</a>
-</center>
+
+<?php
+}else{
+
+?>
+<a href="index.php">Go to homepage</a>
+    <?php
+}
+?></center>
     <br>
 
     <div id="aaaa">

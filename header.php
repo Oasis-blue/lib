@@ -1443,12 +1443,13 @@ window.onclick=function(event){if(event.target ==modal){mmm.style.display="none"
               <div class="dropdown">
                 <a tabindex="0" class="navlink">BOOKS</a>
                 <div class="dropdown-content">
-                  <a href="">TEXTBOOKS</a>
-                  <a href="">AUDIOBOOKS</a>
-                  <a href="">HAND-OUTS</a>
-                  <a href="">LITERATURE</a>
-                  <a href="">ENCYCLOPEDIA</a>
-                  <a href="">ALL BOOKS</a>
+                <a href="content.php?retp=books">ALL BOOKS</a>
+                  <a href="content.php?retp=audb">AUDIOBOOKS</a>
+                  <a href="content.php?retp=txtb">TEXTBOOKS</a>
+                  <a href="content.php?retp=hndt">HAND-OUTS</a>
+                  <a href="content.php?retp=lit">LITERATURE</a>
+                  <a href="content.php?retp=enc">ENCYCLOPEDIA</a>
+                  
                 </div>
               </div>
 
@@ -1460,21 +1461,21 @@ window.onclick=function(event){if(event.target ==modal){mmm.style.display="none"
 <div class="dropdown">
   <a  class="navlink">OTHER RESOURCES</a>
   <div class="dropdown-content">
-    <a href="">ARTICLES/JOURNALS</a>
-    <a href="">ONGOING RESEARCH</a>
-    <a href="">NEWSPAPERS/MAGAZINES</a>
-    <a href="">PHOTO LIBRARY</a>
-    <a href="">PAST QUESTIONS</a>
-    <a href="">OTHER PUBLICATIONS</a>
+    <a href="content.php?retp=arti">ARTICLES/JOURNALS</a>
+    <a href="content.php?retp=resh">ONGOING RESEARCH</a>
+    <a href="content.php?retp=news">NEWSPAPERS/MAGAZINES</a>
+    <a href="content.php?retp=phot">PHOTO LIBRARY</a>
+    <a href="content.php?retp=psq">PAST QUESTIONS</a>
+    <a href="content.php?retp=othe">OTHER PUBLICATIONS</a>
   </div>
 </div>
 
 
 </li>
 
-<li class="item"><a href="" class="navlink">VIDEOS</a></li>
+<li class="item"><a href="content.php?retp=vid" class="navlink">VIDEOS</a></li>
 
-<li class="item"><a href="" class="navlink">AUTHORS</a></li>
+<li class="item"><a href="authors.php" class="navlink">AUTHORS</a></li>
 
 
 

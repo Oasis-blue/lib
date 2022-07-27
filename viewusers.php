@@ -156,6 +156,7 @@ function myFunctionne() {
     <th style="width:40%;">User ID</th>
     <th style="width:40%;">Full Name</th>
     <th></th>
+    <th></th>
   </tr>
 
 <?php
@@ -168,6 +169,11 @@ while($getda=mysqli_fetch_array($getusers)){
     <td><?php  echo $getda["userid"]  ?></td>
     <td><?php  echo $getda["surname"]  ?> <?php  echo $getda["fname"]  ?></td>
     <td><?php  $r= $getda["userid"]; echo '<a href="userdetails.php?id='."$r".'">Details</a>'; ?></td>
+    <td><?php if($getda["status"]==0){ echo '<a href="activate.php?id='."$r".'" style="color:green">Activate</a>';}else{
+
+echo '<a href="deactivate.php?id='."$r".'" style="color:red">Deactivate</a>';
+
+    } ?></td>
   </tr>
   <?php
 
