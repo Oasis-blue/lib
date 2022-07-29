@@ -65,8 +65,8 @@ include("header.php");
     </table>
     <hr style="color:black" >
 
-    <p class="mmm" id="mmm" style="text-align: center"><?php echo $signerr;?></p>
-    <p style="text-align: center"><?php echo $mssg;?></p>
+    <p class="mmm" id="mmm" style="text-align: center"><?php echo $signerr ?? "";?></p>
+    <p style="text-align: center"><?php echo $mssg ?? "";?></p>
 
     <h1 align="center">Sign up</h1>
 
@@ -85,9 +85,9 @@ include("header.php");
 <div class="table" >
 <div class="tr">
     <div class="td">
-<label for="fname">First Name:<br></label><input type="text" name="fname" id="fname" placeholder="Enter your Firstname" value="<?php echo $re1; ?>" required >
+<label for="fname">First Name:<br></label><input type="text" name="fname" id="fname" placeholder="Enter your Firstname" value="<?php echo $re1 ?? ""; ?>" required >
     </div><div class="td">
-<label for="sname">Surname:<br></label><input type="text" name="surname" id="sname" placeholder="Enter your Surname" value="<?php echo $re2; ?>" required >
+<label for="sname">Surname:<br></label><input type="text" name="surname" id="sname" placeholder="Enter your Surname" value="<?php echo $re2 ?? "" ?? ""; ?>" required >
   </div>
 
 
@@ -99,9 +99,9 @@ include("header.php");
   
 <div class="tr">
     <div class="td">
-<label for="phone">Phone Number:<br></label><input type="text" name="phone" id="phone" placeholder="e.g 07012345678" value="<?php echo $re3; ?>" required >
+<label for="phone">Phone Number:<br></label><input type="text" name="phone" id="phone" placeholder="e.g 07012345678" value="<?php echo $re3 ?? ""; ?>" required >
     </div> <div class="td">
-<label for="email">E-mail:<br></label><input type="email" name="email" id="email" placeholder="Enter your email address" value="<?php echo $re4; ?>" required >
+<label for="email">E-mail:<br></label><input type="email" name="email" id="email" placeholder="Enter your email address" value="<?php echo $re4 ?? ""; ?>" required >
 </div>
 
 

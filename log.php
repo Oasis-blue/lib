@@ -13,7 +13,13 @@ if(isset($_SESSION['user'])){
 
 
 }
+if(isset($_SESSION['admin'])){
 
+   
+    header("Location:req.php");
+
+
+}
 include("exfix.php");
 include("logwork.php");
 include("checkses.php");

@@ -1,5 +1,6 @@
 <?php
 session_start();
+$au="";//initializing author ID variable to prevent undefined warning error
 if(isset($_GET['retp'])){
 $type = $_GET['retp'];
 
@@ -12,9 +13,8 @@ $au=$_GET['auth'];
 
 
 
-}else{
-    $type='';
 }
+
 include("exfix.php");
 include("connection.php");
 include("logwork.php");
@@ -23,7 +23,7 @@ include("checkses.php");
 
 $getaut=mysqli_query($connection, "SELECT * FROM lib.authors where authid='$au'");
 $ga=mysqli_fetch_assoc($getaut);
-$aau=$ga['author'];
+$aau=$ga['author'] ?? "";
 
 switch ($type) {
     case 'enc':
@@ -297,7 +297,7 @@ function myFunctionnee() {
         <br>
     </div><br>
     <?php
-    if (isset($_GET['retp'])) { ?>
+    if (isset($type)) { ?>
 
 
         <h1>Displaying all under <u><?php echo $thehead ?></u></h1>

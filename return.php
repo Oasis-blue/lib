@@ -112,7 +112,7 @@ include("header.php");
 
 
 <div class="alrt">
-    <p><?php echo $mesg ?></p>
+    <p><?php echo $mesg ?? "" ?></p>
 <p>You are about to MAKE A RETURN for user 
     
 <?php echo $gt["requesterid"]; ?>

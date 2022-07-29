@@ -18,7 +18,7 @@ function random_num($length)
         $text .= rand(0, 9);    }    return $text;
 }
 
-if($_POST["sign"]!=""){
+if(isset($_POST["sign"])){
 
    if( $_POST["pin"]==$_POST["pinn"]){
 

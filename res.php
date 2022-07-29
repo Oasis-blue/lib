@@ -6,7 +6,7 @@ include("connection.php");
 
 include("exfix.php");
 if (
-    $_POST["sugg"] != ""
+    isset($_POST["sugg"])
 
 ) {
     if (!isset($_SESSION['user'])) {
@@ -73,26 +73,7 @@ if (!isset($_SESSION['search'])) {
     <title>Search results</title>
 </head>
 <style>
-    @import url("//fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
-
-    /* Table Data */
-    .doit tbody td,
-    th {
-        font-family: 'Open Sans', sans-serif;
-        font-weight: 600;
-    }
-
-    .doit tbody td {
-        height: 2.3em;
-        background-color: #ecf0f1;
-    }
-
-
-    /* Division */
-    body div:nth-child(8) {
-        background-image: url("https://images.unsplash.com/photo-1494809610410-160faaed4de0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTc5fDB8MXxzZWFyY2h8MXx8ZSUyMGxpYnJhcnl8ZW58MHx8fHwxNjU4MjY3MzI0&ixlib=rb-1.2.1&q=80&w=2560");
-        background-size: cover;
-    }
+ 
 
 
     /* Head */
@@ -171,7 +152,7 @@ include("resolu.php");
         <p class="head1">Search results(<?php echo mysqli_num_rows($search) ?>)</p>
         <br>
     </div>
-    <?php echo $nores; ?>
+    <?php echo $nores ?? ""; ?>
     <div style="overflow-x:auto;">
 
     <table class="doit" width="100%">
@@ -302,7 +283,7 @@ include("resolu.php");
     <?php if (isset($_SESSION['admin'])) {
     } else { ?>
         <center>
-            <p class="nm" style="color: red;"> <?php echo $suerr  ?>
+            <p class="nm" style="color: red;"> <?php echo $suerr ?? ""  ?>
             </p>
             <form method="POST">
                 <p class="nm">You can<br><button type="submit" name="sugg" value="sug" class="sugg">Request an addition</button><br>to the library.</p>

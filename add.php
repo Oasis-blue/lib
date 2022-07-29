@@ -16,7 +16,7 @@ $bottom2="";
 // connect to the database
 include("connection.php");
 // Uploads files
-if ($_POST['add']!="") { // if add button on the form is clicked
+if (isset($_POST['add'])) { // if add button on the form is clicked
     // name of the uploaded file
     $filename = $_FILES['myfile']['name'];
 
@@ -376,7 +376,7 @@ include("header.php");
 <br>
 <center>
 <a href="index.php" style="color: white;">GO TO HOMEPAGE</a>
-<?php echo "<br>$succ"  ?>
+<?php echo "<br>".($succ ?? "")  ?>
 </center>
 <br> </div>
 <br>

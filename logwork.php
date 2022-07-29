@@ -3,7 +3,7 @@
 
 include("exfix.php");
 include("connection.php");
-
+if(isset($_POST["loginad"])){
 if($_POST["loginad"]!=""){
 $id=$_POST["adid"];
 $key=$_POST["key"];
@@ -16,8 +16,8 @@ $_SESSION['admin']=$adm['adminid'];
 
 }else{$err="Invalid details".' <span class="cls">&times;</span>';}
 
-}
-
+}}
+if(isset($_POST["login"])){
 if($_POST["login"]!=""){
     $id=$_POST["id"];
     $pass=$_POST["pass"];
@@ -32,7 +32,7 @@ if($_POST["login"]!=""){
     
     }}else{$err="Invalid details".' <span class="cls">&times;</span>';}
     
-    }
+    }}
     
 
 

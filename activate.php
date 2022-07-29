@@ -19,7 +19,7 @@ include("connection.php");
 include("checkses.php");
 $user=$_GET['id'];
 
-if($_POST['acti']!=""){
+if(isset($_POST['acti'])){
 
     $ac=mysqli_query($connection,"update lib.users set status=1 where userid='$user'");
     
@@ -182,7 +182,7 @@ include("header.php");
 <br> </div><br>
 <center><a href="viewusers.php">GO BACK</a>
 <br>
-<?php echo $msg ?></center>
+<?php echo $msg ?? "" ?></center>
 <center><h1>Activate User <?php
 
 echo $user;

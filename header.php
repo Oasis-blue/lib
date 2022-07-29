@@ -1424,14 +1424,14 @@ window.onclick=function(event){if(event.target ==modal){mmm.style.display="none"
           
           <ul class="menu">
 <li><a href="index.php"> <img class="logo" src="logoo.png"></a></li>
-          <?php echo $logout ?>
- <?php echo $adlog; echo $vie; ?>
+          <?php echo $logout ?? '' ?>
+ <?php echo $adlog ?? ""; echo $vie ?? ""; ?>
 
 
 
 
 
-<?php echo $userlog;?>
+<?php echo $userlog ?? "";?>
 
 
 
@@ -1480,7 +1480,7 @@ window.onclick=function(event){if(event.target ==modal){mmm.style.display="none"
 
 
         
-          <?php echo $reqq ?>
+          <?php echo $reqq ?? "" ?>
 
 
           <li class="toggle"><a href="#"><i class="fas fa-bars"></i><!--&#9776;--></a></li>
@@ -1518,4 +1518,4 @@ window.onclick=function(event){if(event.target ==modal){mmm.style.display="none"
 
 
 
-    <p class="mmm" id="mmm" style="text-align: center"><?php echo $err;?></p>
+    <p class="mmm" id="mmm" style="text-align: center"><?php echo $err ?? '';?></p>

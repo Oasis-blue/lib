@@ -92,7 +92,7 @@ if(!isset($_SESSION['admin'])){
     $countvc=mysqli_num_rows($goc)+mysqli_num_rows($gofc);
     $bottom1='<a class="flink" href="viewreq.php?sts=pending">View pending requests('.$countvc.')</a>';
 
-    $reqm='<a class="view" target="_blank" href='.'upload'."\"".$getdata3['link']." >View</a>";
+    $reqm='<a class="view" target="_blank" href='.'upload'."\"".($getdata3['link'] ?? "")." >View</a>";
 $userlog="";
 $getlibcard="";
 
