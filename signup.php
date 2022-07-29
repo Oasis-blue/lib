@@ -71,7 +71,7 @@ include("header.php");
     <h1 align="center">Sign up</h1>
 
     <br><center>
-<?php echo $gob; ?>
+<?php echo $gob ?? ""; ?>
 </center>
    
     <br>

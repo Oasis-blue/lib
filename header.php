@@ -1435,7 +1435,7 @@ window.onclick=function(event){if(event.target ==modal){mmm.style.display="none"
 
 
 
-           <?php echo $getlibcard; ?>
+           <?php echo $getlibcard ?? ""; ?>
 
 
             <li class="item has-submenu">
