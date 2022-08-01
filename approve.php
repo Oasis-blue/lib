@@ -19,13 +19,10 @@ include("checkses.php");
 $rqid=$_GET["rqid"];
 
 
-
-
-
-
 $goc=mysqli_query($connection,"select * from lib.requests where requestid='$rqid'");
 $gt=mysqli_fetch_assoc($goc);
-if($_POST["appro"]!=""){
+
+if(isset($_POST["appro"])){
 
     $l=$gt['bookid'];
     $ll=mysqli_query($connection,"select * from lib.content where contentid='$l'");
@@ -55,13 +52,18 @@ $upcont=mysqli_query($connection,"update lib.content set copies=copies-$num wher
 
 }
 if($upcont==1){
-$mesg="Request approved";
+$mesg="<span style='color:green'>Request approved</span>";
 
-}else{$mesg="failed to approve request, please contact programmer";}
+}else{$mesg="<span style='color:red'>failed to approve request, please contact programmer</span>";}
 
 
 
 }
+
+
+$goc=mysqli_query($connection,"select * from lib.requests where requestid='$rqid'");
+$gt=mysqli_fetch_assoc($goc);
+
 
 
 
@@ -89,7 +91,17 @@ include("resolu.php");
 
 
 ?>
+<style>
 
+/* Link */
+.erreerr center a{
+ color:blue;
+}
+
+
+
+
+</style>
 <body>
     
 
@@ -101,17 +113,13 @@ include("header.php");
 ?>
 
 </table>  
-<hr style="color:black" >
-<div style="background-image: url('<?php  echo $stories[$dis]  ?>');
-    background-size: cover;">
+<hr>
+<div class="ssaf">
 <div class="alr">
-<div style=" border-top-left-radius:49%;
- border-top-right-radius:50%;
- background-color:rgba(255,255,255,0.96) !important;
- border-style:none !important;">   <br>      <br> 
-  <center>  <a href="<?php if($_SESSION["jskd"]=="yo"){ echo "viewusers.php";}else{ echo "viewreq.php";}?>">GO BACK</a></center>
+<div class="erreerr">   <br>      <br> 
+  <center>  <a href="<?php  if(isset($_SESSION["jskd"])){if($_SESSION["jskd"] =="yo"){ echo "viewusers.php";}else{ echo "viewreq.php";}}else{ echo "viewreq.php";}?>">GO BACK</a></center>
 <div class="alrt">
-    <p><?php echo $mesg ?></p>
+    <p><?php echo $mesg ?? "" ?></p>
 <p>You are about to approve user 
     
 <?php echo $gt["requesterid"]; ?>'s 

@@ -16,9 +16,41 @@ $bottom2="";
 // connect to the database
 include("connection.php");
 // Uploads files
-if ($_POST['add']!="") { // if add button on the form is clicked
+if (isset($_POST['add'])) { // if add button on the form is clicked
     // name of the uploaded file
     $filename = $_FILES['myfile']['name'];
+
+  
+        $title=$_POST['title'];
+$author=$_POST['author'];
+$courseid=$_POST['course'];
+$facid=$_POST['fac'];
+$tag1=$_POST['tag1'];
+$tag2=$_POST['tag2'];
+$tag3=$_POST['tag3'];
+$matinfo=$_POST['matinfo'];
+$deptid=$_POST['dep'];
+$typeid=$_POST['type'];
+$yearofpub=$_POST['year'];
+$description=$_POST['des'];
+$class=$_POST['class'];
+$cate=$_POST['cat'];
+$copies=$_POST['copies'];
+$dateofup=date("d-M-Y");
+
+if($matinfo=="softcopy"){
+        if($filename==""){
+            $succe="<span style='color:red'>Please provide the file you are uploading</span>";
+        }}
+    if($matinfo=="hardcopy"){
+        if($copies==""){
+            $succe="<span style='color:red'>Please provide the number of copies</span>";
+        }
+    }
+    
+
+if(isset($succe)){}else{
+
 
     // destination of the file on the server
     $destination = 'upload/' . $filename;
@@ -38,21 +70,33 @@ if ($_POST['add']!="") { // if add button on the form is clicked
         // move the uploaded (temporary) file to the specified destination
         move_uploaded_file($file, $destination);
         //if (move_uploaded_file($file, $destination)) {
-$title=$_POST['title'];
-$author=$_POST['author'];
-$courseid=$_POST['course'];
-$facid=$_POST['fac'];
-$tag1=$_POST['tag1'];
-$tag2=$_POST['tag2'];
-$tag3=$_POST['tag3'];
-$matinfo=$_POST['matinfo'];
-$deptid=$_POST['dep'];
-$typeid=$_POST['type'];
-$yearofpub=$_POST['year'];
-$description=$_POST['des'];
-$class=$_POST['class'];
-$cate=$_POST['cat'];
-$copies=$_POST['copies'];
+
+
+
+$checkauthor=mysqli_query($connection,"select * from lib.authors where author='$author'");
+if(mysqli_num_rows($checkauthor)>0){
+    $r=mysqli_fetch_assoc($checkauthor);
+    $authid=$r['authid'];
+}
+
+
+
+if(mysqli_num_rows($checkauthor)<1){
+
+$sendauth=mysqli_query($connection, "INSERT INTO lib.authors (author) values('$author')");
+if($sendauth==1){
+$checkauthor2=mysqli_query($connection,"select * from lib.authors where author='$author'");
+}
+
+    $r2=mysqli_fetch_assoc($checkauthor2);
+    $authid=$r2['authid'];
+}
+
+
+
+
+
+
 
 
             $tags=$tag1." ".$tag2." ".$tag3;
@@ -72,8 +116,8 @@ if($tag1==$tag3 && $tag1==$tag2){
 //$seekdoub=mysqli_query($connection, "select ")
 
 
-            $sql = "INSERT INTO lib.content (title, author, courseid, facid, deptid, typeid, tags, description, yearofpub, link, classid, catid, copies, matinfo) 
-            VALUES ('$title','$author','$courseid','$facid','$deptid','$typeid','$tags','$description','$yearofpub','$filename','$class','$cate','$copies', '$matinfo')";
+            $sql = "INSERT INTO lib.content (title, author, authid, courseid, facid, deptid, typeid, tags, description, yearofpub, link, classid, catid, copies, matinfo, uploaddate) 
+            VALUES ('$title','$author','$authid','$courseid','$facid','$deptid','$typeid','$tags','$description','$yearofpub','$filename','$class','$cate','$copies', '$matinfo', '$dateofup')";
             $res=mysqli_query($connection, $sql);
             if ($res==1) {
 $checktag1=mysqli_query($conn,"select * from keywords where tag='$tag1'");
@@ -88,13 +132,13 @@ if(mysqli_num_rows($checktag1)<1){
                 $checktag3=mysqli_query($conn,"select * from keywords where tag='$tag3'");
 if(mysqli_num_rows($checktag3)<1){
                 $sqlll=mysqli_query($conn,"insert into lib.keywords (tag) values ('$tag3')");}
-                echo "File uploaded successfully";
+                $succ="<span style='color:green'>File uploaded successfully</span>";
             }
      //   } else {
             //echo "Failed to upload file.";
             
         }
-   // }
+  }
 //}
 
 
@@ -123,218 +167,255 @@ if(mysqli_num_rows($checktag3)<1){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add a book</title>
-</head>
-<style>
-.hl{
- background-image:url("https://images.unsplash.com/photo-1658222075223-c24006eb133a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTc5fDB8MXxhbGx8MTV8fHx8fHwyfHwxNjU4MjY1OTk5&ixlib=rb-1.2.1&q=80&w=2560");
- background-size:cover;
-}
-/* Body */
-body{
-
-
- font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;
- color:#ffffff;
-}
-
-/* Type */
-#type{
- font-size:21px;
-}
-
-/* Input */
-input{
- font-size:20px;
- height: 2em;
-}
-
-/* Form Division */
-form{
- display:flex;
-
- flex-direction:column;
- justify-content:normal;
- align-items:normal;
- width:34% !important;
- transform:translatex(0px) translatey(0px);
- position:relative;
- left:35vw;
- margin-bottom:116px;
-}
-
-/* Input */
-form input[type=submit]{
- width:42% !important;
- align-self:center;
- cursor:pointer;
-}
-
-/* Label */
-form label{
- font-size:18px;
-}
-
-/* Dep */
-#dep{
- font-size:21px;
-}
-
-/* Select */
-select{
-    height: 2em;
- font-size:21px;
-}
-
-/* Des */
-#des{
- font-size:21px;
-}
-
-/* Input */
-form input[type=file]{
-
- margin-top:36px;
-}
-
-
-/* Division */
-.hl{
- background-color:#7f8c8d;
- border-top-left-radius:10%;
- border-top-right-radius:10%;
- border-bottom-left-radius:10%;
- border-bottom-right-radius:10%;
-}
-
-
-/* Form Division */
-.hl form{
- width:746px !important;
- left:309px;
-}
-
-@media (max-width:1146px){
-
- /* Form Division */
- .hl form{
-  left:200px;
- }
- 
-}
-
-@media (max-width:1052px){
-
- /* Form Division */
- .hl form{
-  left:162px;
- }
- 
-}
-
-@media (max-width:974px){
-
- /* Form Division */
- .hl form{
-  left:118px;
- }
- 
-}
-
-@media (max-width:921px){
-
- /* Form Division */
- .hl form{
-  left:174px;
-  width:549px !important;
- }
- 
-}
-
-@media (max-width:847px){
-
- /* Form Division */
- .hl form{
-  left:106px;
- }
- 
-}
-
-@media (max-width:717px){
-
- /* Form Division */
- .hl form{
-  width:487px !important;
- }
- 
-}
-
-@media (max-width:713px){
-
- /* New created breakpoint. */
- 
-}
-
-@media (max-width:684px){
-
- /* Form Division */
- .hl form{
-  width:399px !important;
- }
- 
-}
-
-@media (max-width:598px){
-
- /* New created breakpoint. */
- 
-}
-
-@media (max-width:544px){
-
- /* Form Division */
- .hl form{
-  width:324px !important;
-  left:71px;
- }
- 
-}
-
-@media (max-width:476px){
-
- /* New created breakpoint. */
- 
-}
-
-@media (max-width:421px){
-
- /* Form Division */
- .hl form{
-  left:50px;
- }
- 
-}
-
-@media (max-width:414px){
-
- /* New created breakpoint. */
- 
-}
-
-@media (max-width:395px){
-
- /* Form Division */
- .hl form{
-  left:29px;
-  width:286px !important;
- }
- 
-}
-</style>
-<?php
+</head><?php
 include("resolu.php");
 
 
 ?>
+<style>
+/* Division */
+.hl{
+ display:grid;
+ flex-direction:row;
+ flex-wrap:wrap;
+ justify-content:center;
+ background-color:rgba(239,239,239,0.87);
+ grid-template-rows:auto 1fr !important;
+ width:46%;
+ position:relative;
+ left:400px;
+ box-shadow:0px 0px 27px 0px rgba(0,0,0,0.38);
+}
+
+/* Input */
+.hl form input[type=file]{
+ font-size:16px;
+}
+
+/* Form Division */
+.hl form{
+ padding-top:13px;
+ padding-bottom:14px;
+ display:flex;
+ flex-direction:column;
+ width:543px;
+}
+
+/* Title */
+#title{
+ font-size:18px;
+ padding-left:2px;
+ padding-top:6px;
+ padding-bottom:6px;
+}
+
+/* Type */
+#type{
+ padding-top:6px;
+ padding-bottom:6px;
+ font-size:18px;
+}
+
+/* Select */
+.hl select{
+ font-size:18px;
+ padding-top:6px;
+ padding-bottom:6px;
+}
+
+/* Input */
+.hl input{
+ font-size:18px !important;
+ padding-top:6px;
+ padding-bottom:6px;
+}
+
+/* Des */
+#des{
+ font-size:18px;
+ padding-top:6px;
+ padding-bottom:6px;
+}
+
+@media (max-width:1146px){
+
+/* Division */
+.hl{
+ width:615px;
+ left:285px;
+}
+
+}
+
+@media (max-width:1035px){
+
+/* Division */
+.hl{
+ left:241px;
+}
+
+}
+
+@media (max-width:966px){
+
+/* Division */
+.hl{
+ left:0px;
+}
+
+}
+
+@media (max-width:964px){
+
+/* Division */
+.hl{
+ align-content:center;
+ width:100%;
+}
+
+}
+
+@media (max-width:640px){
+
+/* Division */
+.hl{
+ width:97%;
+}
+
+}
+
+@media (max-width:592px){
+
+/* Select */
+.hl form select{
+ width:68% !important;
+ align-self:center;
+}
+
+/* Input */
+.hl input{
+ width:71% !important;
+ align-self:center;
+}
+
+/* Des */
+#des{
+ width:76% !important;
+ align-self:center;
+}
+
+/* Label */
+.hl form label{
+ width:73% !important;
+ align-self:center;
+}
+
+/* Division */
+.hl{
+ width:100%;
+}
+
+}
+
+@media (max-width:421px){
+
+/* Division */
+.hl{
+ transform:translatex(0px) translatey(0px);
+}
+
+/* Des */
+#des{
+ width:60% !important;
+}
+
+/* Label */
+.hl form label{
+ width:62% !important;
+}
+
+/* Select */
+.hl form select{
+ width:60% !important;
+}
+
+/* Input */
+.hl form input[type=file]{
+ width:57% !important;
+}
+
+/* Input */
+.hl form input{
+ width:60% !important;
+}
+
+}
+
+@media (max-width:415px){
+
+/* New created breakpoint. */
+
+}
+
+@media (max-width:361px){
+
+/* Select */
+.hl form select{
+ width:41% !important;
+}
+
+/* Label */
+.hl form label{
+ width:41% !important;
+}
+
+/* Year */
+#year{
+ width:43% !important;
+}
+
+/* Author */
+#author{
+ width:43% !important;
+}
+
+/* Title */
+#title{
+ width:43% !important;
+}
+
+/* Des */
+#des{
+ width:43% !important;
+}
+
+/* Copies */
+#copies{
+ width:43% !important;
+}
+
+/* Input */
+.hl form input[type=text]{
+ width:43% !important;
+}
+
+/* Input */
+.hl form input{
+ width:43% !important;
+}
+
+}
+
+@media (max-width:272px){
+
+/* Input */
+.hl form input[type=file]{
+ width:40% !important;
+}
+
+}
+
+</style>
 <body>
 <table width="100%" class="tabbb">
 <?php
@@ -344,13 +425,15 @@ include("header.php");
 ?>
 
 </table>  
-<hr style="color:black" >
+<hr>
 
 <br>
 <div class="colo">
 <br>
 <center>
-<a href="index.php" style="color: white;">GO TO HOMEPAGE</a>
+<a href="index.php" >GO TO HOMEPAGE</a>
+<?php echo "<br>".($succ ?? "")  ?>
+<?php echo "<br>".($succe ?? "")  ?>
 </center>
 <br> </div>
 <br>
@@ -384,15 +467,34 @@ while($gettype=mysqli_fetch_array($select)){
 </select>
 <br>
 <label for="title">Title:</label>
-<input type="text" id="title" name="title" placeholder="enter the title of the document/resource">
+<input type="text" id="title" name="title" placeholder="enter the title of the document/resource" required value="<?php if(isset($succe)){
+    echo $title;
+} ?>">
 <br>
 <label for="author">Author:</label>
-<input type="text" id="author" name="author" placeholder="enter the name of author(s) or patents of the document/resource">
+<input type="text" id="author" name="author" placeholder="enter the name of author(s) or patents of the document/resource" list="authors" value="<?php if(isset($succe)){
+    echo $author;
+} ?>">
+
+<datalist id="authors">
+    <?php
+$selecttrr=mysqli_query($connection, "SELECT * FROM lib.authors");
+while($trr=mysqli_fetch_array($selecttrr)){
+?>
+<option value="<?php echo $trr["author"]; ?>">
+<?php
+}
+?>
+
+</datalist>
+
 <br>
 
 <label for="year">Year of Publicaction:</label>
 
-<input type="number" id="year" name="year" placeholder="enter year of publication">
+<input type="number" id="year" name="year" placeholder="enter year of publication" value="<?php if(isset($succe)){
+    echo $yearofpub;
+} ?>">
 <br>
 
 <!--Note to self, Add upload date whe editting again-->

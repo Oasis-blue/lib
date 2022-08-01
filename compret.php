@@ -10,11 +10,12 @@ if(!isset($_SESSION['admin'])){
 }
 
 include("exfix.php");
+
 if($_SESSION['rett']==""
 or
 $_SESSION["date"]=="" or
 $_SESSION["copies_num"]=="" or
-$_SESSION["fine"]==$fine or
+$_SESSION["fine"]=="" or
 //$_SESSION["finetotal"]=="" or
 $_SESSION["bookid"]==""
 ){
@@ -45,7 +46,7 @@ if($_POST["appro"]!=""){
    
 
 $admin=$_SESSION['admin'];
-
+$paidornot=$paidornot ?? "";
 if(isset($_POST["paid"])){
     
    
@@ -57,7 +58,10 @@ $regreturn=mysqli_query($connection,"insert into lib.returns
 values('$rqid', '$l', '$date', '$num', '$admin', '$getfine', '$paidornot' ) ");
 
 if($regreturn==1){
-if($num+$gt["no_of_copies_returned"]
+
+
+    $getsum=$gt["no_of_copies_returned"];
+if(intval($num)+intval($getsum)
 
 ==$gt["issued_copies"]){
     $updreq1=mysqli_query($connection,"update lib.requests set approval_status='returned' where requestid='$rqid'");
@@ -102,6 +106,8 @@ if($updreq==1){
 
 
 
+$goc=mysqli_query($connection,"select * from lib.requests where requestid='$rqid'");
+$gt=mysqli_fetch_assoc($goc);
 
 
 
@@ -123,7 +129,9 @@ include("resolu.php");
 
 
 ?>
+<style>/* Link */
 
+</style>
 <body>
     
 
@@ -135,25 +143,21 @@ include("header.php");
 ?>
 
 </table>  
-<hr style="color:black" >
-<div style="background-image: url('<?php  echo $stories[$dis]  ?>');
-    background-size: cover;">
+<hr>
+<div class="ssaf">
 <div class="alr">
- <div style=" border-top-left-radius:49%;
- border-top-right-radius:50%;
- background-color:rgba(255,255,255,0.96) !important;
- border-style:none !important;">    <br>      <br> 
+<div class="erreerr">     <br>      <br> 
   <center>  <a href="return.php">GO BACK</a></center>
 <div class="alrt">
-    <p style="color:green; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"><u><?php echo $msssg ?></u></p>
+    <p style="color:green; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"><u><?php echo $msssg ?? "" ?></u></p>
 
-    <p style="color:red; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"><u><?php echo $mssgerr ?></u></p>
+    <p style="color:red; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"><u><?php echo $mssgerr ?? "" ?></u></p>
 
 
-    <p>Complete return for user 
+    <center><h2>Complete return for user
     
-<?php echo $gt["requesterid"]; ?>
-<br>
+<?php echo $gt["requesterid"]; ?> </h2>
+    </center><p>Returning <?php  echo $num ?> out of <?php echo $gt["issued_copies"] ?> issued.</p><p>
 Title:
 <u><?php
 $l=$gt['bookid'];
@@ -170,7 +174,7 @@ echo $thhh["type"] ?>
 <br>
 <br>Request ID:<?php echo $rqid ?> </p>
 
-<p>Returning <?php  echo $num ?> out of <?php echo $gt["issued_copies"] ?> issued.</p>
+
 
 </div>
 <div class="fm">

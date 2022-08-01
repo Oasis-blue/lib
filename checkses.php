@@ -43,26 +43,12 @@ if(!isset($_SESSION['admin'])){
     <li class="item button">
     
     
-    <div class="dropdown2">
+   
     
     
     
-    <a class="navlink"><button onclick="myFunction()" class="dropbtn">USER LOGIN</button></a>
+    <a class="navlink" href="log.php"><button class="dropbtn">USER LOGIN</button></a>
     
-    <div id="myDropdown2" class="dropdown-content2">
-    <form method="POST">
-    <label for="id">Library card no.:<br></label><input type="text" name="id" id="id" class="id" placeholder="Enter your library number" required >
-    <br>
-    <br>
-    <label for="pass">Password:<br></label><input type="password" name="pass" id="pass" class="pass" placeholder="Enter your pin" required >
-    <br>
-    <br>
-    <input type="submit" name="login" class="login" value="Login">
-    
-    
-    </form>
-    </div>
-    </div>
     
     
     
@@ -75,6 +61,7 @@ if(!isset($_SESSION['admin'])){
         $vie='<li class="item"><a class="navlink" href="viewreq.php">REQUESTS</a></li>';
     $logout='<li class="item"><a class="navlink"  href="logout.php">LOG OUT</a></li>';
     $bottom2='<a class="flink" href="add.php">Add a book</a>';
+    $bottom22='<a class="flink" href="reqhist.php">Request History</a>';
     $bottom3='<a class="flink" href="ret.php">Return a book</a>';
     $bottom7='<a class="flink" href="viewusers.php">View Users</a>';
     $checksub=mysqli_query($connection, "select * from lib.sugg");
@@ -92,7 +79,7 @@ if(!isset($_SESSION['admin'])){
     $countvc=mysqli_num_rows($goc)+mysqli_num_rows($gofc);
     $bottom1='<a class="flink" href="viewreq.php?sts=pending">View pending requests('.$countvc.')</a>';
 
-    $reqm='<a class="view" target="_blank" href='.'upload'."\"".$getdata3['link']." >View</a>";
+    $reqm='<a class="view" target="_blank" href='.'upload'."\"".($getdata3['link'] ?? "")." >View</a>";
 $userlog="";
 $getlibcard="";
 
