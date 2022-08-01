@@ -80,6 +80,19 @@ h1{
  font-family:'Open Sans', sans-serif;
  text-align: center;
 }
+/* Heading */
+
+
+/* Table Row */
+#myTable tr{
+ background-color:#f1f1f1;
+}
+
+/* Table Row (hover) */
+#myTable tr:hover{
+ box-shadow:0px 0px 19px 1px #000000;
+}
+
 
 </style>
 
@@ -94,7 +107,7 @@ include("header.php");
 ?>
 
 </table>  
-<hr style="color:black" >
+<hr>
 
 
 <div class="heading"><h1>Suggestions</h1></div>

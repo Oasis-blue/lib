@@ -10,7 +10,7 @@ if(!isset($_SESSION['admin'])){
 }
 
 include("exfix.php");
-if($_GET["rqid"]!=""){
+if(isset($_GET["rqid"])){
     $_SESSION['rett']=$_GET["rqid"];
 }
 
@@ -30,7 +30,7 @@ $rqid=$_SESSION['rett'];
 
 $goc=mysqli_query($connection,"select * from lib.requests where requestid='$rqid'");
 $gt=mysqli_fetch_assoc($goc);
-if($_POST["appro"]!=""){
+if(isset($_POST["appro"])){
 
     $l=$gt['bookid'];
     $ll=mysqli_query($connection,"select * from lib.content where contentid='$l'");
@@ -85,7 +85,9 @@ include("resolu.php");
 
 
 ?>
+<style>/* Link */
 
+</style>
 <body>
     
 
@@ -97,22 +99,18 @@ include("header.php");
 ?>
 
 </table>  
-<hr style="color:black" >
-<div style="background-image: url('<?php  echo $stories[$dis]  ?>');
-    background-size: cover;">
+<hr>
+<div class="ssaf">
 <div class="alr">
-<div style=" border-top-left-radius:49%;
- border-top-right-radius:50%;
- background-color:rgba(255,255,255,0.96) !important;
- border-style:none !important;">     <br>      <br>
+<div class="erreerr">     <br>      <br>
  
  
-  <center>  <a href="<?php if($_SESSION["jskd"]=="yo"){ echo "viewusers.php";}else{ echo"ret.php";}   ?>">GO BACK</a></center>
+  <center>  <a href="<?php if(isset($_SESSION["jskd"])){if($_SESSION["jskd"]=="yo"){ echo "viewusers.php";}else{ echo"ret.php";}}else{ echo"ret.php";}   ?>">GO BACK</a></center>
 
 
 
 <div class="alrt">
-    <p><?php echo $mesg ?></p>
+    <p><?php echo $mesg ?? "" ?></p>
 <p>You are about to MAKE A RETURN for user 
     
 <?php echo $gt["requesterid"]; ?>

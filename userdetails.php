@@ -39,6 +39,8 @@ include("resolu.php");
 ?>
 <style>
 
+
+
 #myInput, #myInputn {
       box-sizing: border-box;
   background-image: url('searchicon.svg'); /* Add a search icon to input */
@@ -184,7 +186,7 @@ function myFunctionne() {
 
   // Loop through all table rows, and hide those who don't match the search query
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[4];
+    td = tr[i].getElementsByTagName("td")[6];
     if (td) {
       txtValue = td.textContent || td.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -207,13 +209,13 @@ include("header.php");
 ?>
 
 </table>  
-<hr style="color:black" >
+<hr>
 
 <br>
 <div class="colo">
 <br>
 <center>
-<a href="index.php" style="color: white;">GO TO HOMEPAGE</a>
+<a href="index.php">GO TO HOMEPAGE</a>
 </center>
 <br> </div><br>
 <center><a href="viewusers.php">GO BACK</a></center>

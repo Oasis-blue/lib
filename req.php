@@ -49,7 +49,7 @@ $gonot='
 }else{$def=1;
 $re="Send Request";}
 
-if($_POST["not"]!=""){
+if(isset($_POST["not"])){
 
 
     $sendreqq=mysqli_query($connection,"insert into lib.notreqs(userid, bookid, date, time) values('$useridd','$bookid','$date','$tim')");
@@ -63,9 +63,9 @@ if($_POST["not"]!=""){
 
 }
 
-if($_POST["submit"]!=""){
+if(isset($_POST["submit"])){
 
-$checkif=mysqli_query($connection,"select * from lib.requests where requesterid='$useridd' and bookid='$bookid' and approval_status!='returned'");
+$checkif=mysqli_query($connection,"select * from lib.requests where requesterid='$useridd' and bookid='$bookid' and approval_status!='returned' and approval_status!='downloaded' and approval_status!='reverted' and approval_status!='denied'");
 if(mysqli_num_rows($checkif)>0){
     $suc="<span style='color:red'>You cannot make a request for this resource at this time.<br>This is because you already made a request for this recource that has not been settled</span>";
 
@@ -85,7 +85,7 @@ if($sendreq==1){
 
 }
 }
-if($_POST["download"]!=""){
+if(isset($_POST["download"])){
 
     $qq=mysqli_query($connection, "SELECT * FROM lib.reqdown where contentid='$bookid' and userid='$useridd' limit 1");
 if(mysqli_num_rows($qq)>0){
@@ -112,7 +112,7 @@ $erf=mysqli_query($connection,"DELETE FROM lib.reqdown where reid='$reid'");
 }
 
 
-if($_POST['reqqd']!=""){
+if(isset($_POST['reqqd'])){
 
 $zgsd=mysqli_query($connection, "SELECT * FROM lib.reqdown where contentid='$bookid' and userid='$useridd' and access!='granted'");
 
@@ -211,7 +211,7 @@ include("header.php");
 ?>
 
 </table>  
-<hr style="color:black" >
+<hr>
 
 <br>
 
@@ -221,7 +221,7 @@ include("header.php");
 </center>
 <br>
 <center><p><b>
-<?php echo $suc ?></b>
+<?php echo $suc ?? "" ?></b>
 </p></center>
 <br>
 
@@ -367,15 +367,15 @@ function fdd() {
 
 <form method="POST">
 
-<div class="clicker"> Make request for <input type="number" min="1" max="<?php echo $ret["copies"];  ?>" name="nocop" class="cop" value="<?php echo $def ?>"  <?php echo $pick ?> > copy(ies) of the above.</div>
+<div class="clicker"> Make request for <input type="number" min="1" max="<?php echo $ret["copies"];  ?>" name="nocop" class="cop" value="<?php echo $def ?>"  <?php echo $pick ?? "" ?> > copy(ies) of the above.</div>
 
-<br> <div class="clicker"><input type="submit" name="submit" class="req" <?php echo $pick ?>  value="<?php echo $re ?> ">
+<br> <div class="clicker"><input type="submit" name="submit" class="req" <?php echo $pick ?? "" ?>  value="<?php echo $re ?> ">
 
 </div>
 </form>
 
 <br>
-<?php  echo $gonot;   ?>
+<?php  echo $gonot ?? "";   ?>
 
 
 </div>

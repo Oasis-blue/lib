@@ -45,16 +45,16 @@ include("header.php");
 ?>
 
 </table>  
-<hr style="color:black" >
+<hr>
 
 <br>
 <div class="colo"><br>
 <center>
-<a href="index.php" style="color: white;">GO TO HOMEPAGE</a>
+<a href="index.php">GO TO HOMEPAGE</a>
 </center>
 <br>
 <center>
-<a href="ret.php" style="color: white;">GO TO SEARCH</a>
+<a href="ret.php" >GO TO SEARCH</a>
 </center>
 <br> </div>
 <br>

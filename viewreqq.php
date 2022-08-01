@@ -32,7 +32,12 @@ include("resolu.php");
 
 
 ?>
+<style>/* Table */
+div .tbb{
+ color:black;
+}
 
+</style>
 <body>
     
 
@@ -44,7 +49,7 @@ include("header.php");
 ?>
 
 </table>  
-<hr style="color:black" >
+<hr>
 
 
 <br><div class="colo">
@@ -157,7 +162,7 @@ echo $getres['approval_status'];
 if ($getres['approval_status']=='pending'){
 $cid=$getres["bookid"]; $reqm='<a class="view" href="cancel.php?rssn='.$cid.'"'.">Cancel request</a>";
 }
-echo $reqm;
+echo $reqm ?? "";
 
 ?>
 </td>

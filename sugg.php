@@ -11,17 +11,17 @@ if(!isset($_SESSION['user'])){
 include("exfix.php");
 include("checkses.php");
 include("connection.php");
-$title=$_POST["title"];
-$author=$_POST["author"];
-$typeid=$_POST["type"];
-$yearofpub=$_POST["year"];
-$add=$_POST["add"];
-$email=$_POST["email"];
-$phone=$_POST["phone"];
+$title=$_POST["title"] ?? "";
+$author=$_POST["author"] ?? "";
+$typeid=$_POST["type"] ?? "";
+$yearofpub=$_POST["year"] ?? "";
+$add=$_POST["add"] ?? "";
+$email=$_POST["email"] ?? "";
+$phone=$_POST["phone"] ?? "";
 
 $date=date("d-m-Y");
 $userr=$_SESSION['user'];
-if($_POST["sug"]!=""){
+if(isset($_POST["sug"])){
 
 $sendsug=mysqli_query($connection, "insert into lib.sugg (title, author, typeid, yearofpub, additional, userid, email, phone, date) values('$title','$author','$typeid','$yearofpub','$add','$userr','$email','$phone','$date')");
 if($sendsug==1){
@@ -54,7 +54,12 @@ include("resolu.php");
 
 
 ?>
+<style>
 
+
+
+
+</style>
 
 <body>
  
@@ -66,7 +71,7 @@ include("header.php");
 ?>
 
 </table>  
-<hr style="color:black" >
+<hr>
 
 
 <div style="font-family: poppins; min-height: 100vh; min-width: 100vw; display: flex; align-items: center; flex-direction: column; justify-content: center;">
@@ -77,7 +82,7 @@ Suggest a resource to be added to our database.
 
 
 </h1>
-<?php     echo $msg     ?>
+<?php     echo $msg ?? ""    ?>
 
 <div class="vv" style="border: 1px solid black; border-radius: 10px;">
 

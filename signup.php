@@ -17,7 +17,13 @@ if(isset($_SESSION['user'])){
 include("auth.php");
 include("logwork.php");
 include("checkses.php");
+if(isset($_SESSION['admin'])){
 
+   
+    header("Location:req.php");
+
+
+}
 if(isset($_SESSION['user'])){
     header("Location:req.php");
 }
@@ -41,9 +47,20 @@ if(isset($_SESSION['user'])){
 </head>
 <style>/* Body */
 body{
- background-image:url("https://images.unsplash.com/photo-1516979187457-637abb4f9353?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTc5fDB8MXxzZWFyY2h8M3x8ZSUyMGxpYnJhcnl8ZW58MHx8fHwxNjU4MjY3MzI0&ixlib=rb-1.2.1&q=80&w=2560");
+ background-image:url("166.jpg");
  background-size:cover;
 }
+/* Bbbc */
+#bbbc{
+ border-style:solid;
+ border-top-left-radius:13px;
+ border-bottom-right-radius:13px;
+ border-bottom-left-radius:13px;
+ border-top-right-radius:13px;
+ border-width:1px;
+}
+
+
 
 </style>
 <?php
@@ -63,15 +80,15 @@ include("header.php");
 
         ?>
     </table>
-    <hr style="color:black" >
+    <hr>
 
-    <p class="mmm" id="mmm" style="text-align: center"><?php echo $signerr;?></p>
-    <p style="text-align: center"><?php echo $mssg;?></p>
+    <p class="mmm" id="mmm" style="text-align: center"><?php echo $signerr ?? "";?></p>
+    <p style="text-align: center"><?php echo $mssg ?? "";?></p>
 
     <h1 align="center">Sign up</h1>
 
     <br><center>
-<?php echo $gob; ?>
+<?php echo $gob ?? ""; ?>
 </center>
    
     <br>
@@ -85,9 +102,9 @@ include("header.php");
 <div class="table" >
 <div class="tr">
     <div class="td">
-<label for="fname">First Name:<br></label><input type="text" name="fname" id="fname" placeholder="Enter your Firstname" value="<?php echo $re1; ?>" required >
+<label for="fname">First Name:<br></label><input type="text" name="fname" id="fname" placeholder="Enter your Firstname" value="<?php echo $re1 ?? ""; ?>" required >
     </div><div class="td">
-<label for="sname">Surname:<br></label><input type="text" name="surname" id="sname" placeholder="Enter your Surname" value="<?php echo $re2; ?>" required >
+<label for="sname">Surname:<br></label><input type="text" name="surname" id="sname" placeholder="Enter your Surname" value="<?php echo $re2 ?? ""; ?>" required >
   </div>
 
 
@@ -99,9 +116,9 @@ include("header.php");
   
 <div class="tr">
     <div class="td">
-<label for="phone">Phone Number:<br></label><input type="text" name="phone" id="phone" placeholder="e.g 07012345678" value="<?php echo $re3; ?>" required >
+<label for="phone">Phone Number:<br></label><input type="text" name="phone" id="phone" placeholder="e.g 07012345678" value="<?php echo $re3 ?? ""; ?>" required >
     </div> <div class="td">
-<label for="email">E-mail:<br></label><input type="email" name="email" id="email" placeholder="Enter your email address" value="<?php echo $re4; ?>" required >
+<label for="email">E-mail:<br></label><input type="email" name="email" id="email" placeholder="Enter your email address" value="<?php echo $re4 ?? ""; ?>" required >
 </div>
 
 

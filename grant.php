@@ -28,7 +28,7 @@ if($lsfaa['access']=='granted'){
 
 $whho=$_SESSION['admin'];
 
-if($_POST["grant"]!=""){
+if(isset($_POST["grant"])){
 
     $lsfa=mysqli_query($connection, "SELECT * FROM lib.reqdown where reid='$reid'");
     $lsfaa=mysqli_fetch_assoc($lsfa);
@@ -47,6 +47,16 @@ $sd="<p align='center'><span style='color:green'>Request Granted</span></p>";
 
     }
 
+    $reid=$_GET['reid'];
+    $lsfa=mysqli_query($connection, "SELECT * FROM lib.reqdown where reid='$reid'");
+    
+    $lsfaa=mysqli_fetch_assoc($lsfa);
+    if($lsfaa['access']=='granted'){
+        $sds='disabled';
+        $fsse="notg";
+    }else{
+        $fsse="fsse" ;
+    }
 }
 
 
@@ -111,16 +121,16 @@ include("header.php");
 ?>
 
 </table>  
-<hr style="color:black" >
+<hr>
 
 <br>
 <div class="colo">
 <br>
 <center>
-<a href="index.php" style="color: white;">GO TO HOMEPAGE</a>
+<a href="index.php">GO TO HOMEPAGE</a>
 </center>
 <br> </div>
-<?php  echo $sd;  ?>
+<?php  echo $sd ?? "";  ?>
 
 <?php
 
@@ -178,7 +188,7 @@ echo $dg['title'];
 
 <form method="POST">
 
-<button type="submit" value="r" name="grant" <?php echo $sds ?> class="<?php echo $fsse ?>">Grant Access</button>
+<button type="submit" value="r" name="grant" <?php echo $sds ?? "" ?> class="<?php echo $fsse ?? "" ?>">Grant Access</button>
 
 
 </form>

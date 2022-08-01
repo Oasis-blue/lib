@@ -6,7 +6,7 @@ include("connection.php");
 
 include("exfix.php");
 if (
-    $_POST["sugg"] != ""
+    isset($_POST["sugg"])
 
 ) {
     if (!isset($_SESSION['user'])) {
@@ -72,92 +72,18 @@ if (!isset($_SESSION['search'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search results</title>
 </head>
-<style>
-    @import url("//fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
-
-    /* Table Data */
-    .doit tbody td,
-    th {
-        font-family: 'Open Sans', sans-serif;
-        font-weight: 600;
-    }
-
-    .doit tbody td {
-        height: 2.3em;
-        background-color: #ecf0f1;
-    }
-
-
-    /* Division */
-    body div:nth-child(8) {
-        background-image: url("https://images.unsplash.com/photo-1494809610410-160faaed4de0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTc5fDB8MXxzZWFyY2h8MXx8ZSUyMGxpYnJhcnl8ZW58MHx8fHwxNjU4MjY3MzI0&ixlib=rb-1.2.1&q=80&w=2560");
-        background-size: cover;
-    }
-
-
-    /* Head */
-    .head {
-        font-weight: 700;
-        font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
-        font-size: 19px;
-        margin-left: 5%;
-        color: #ffffff;
-        margin-top: 0;
-        margin-bottom: 0;
-    }
-
-
-    .head1 {
-        font-weight: 700;
-        font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
-        font-size: 19px;
-        margin-left: 5%;
-        margin-top: 0;
-        padding-top: 19px;
-    }
-
-    /* Heading */
-    h1 {
-        font-size: 27px;
-        margin-top: 1px;
-        margin-bottom: 1px;
-    }
-
-    /* Heading */
-    h2 {
-        margin-top: 4px;
-        margin-bottom: 4px;
-    }
-
-    /* Result */
-    .result {
-        width: 100% !important;
-        background-color: #a2d7ca;
-        padding-left: 10%;
-    }
-
-    .back {
-        color: white;
-
-    }
-
-    .shead {
-        background-color: #025859;
-    }
-</style>
-
 <?php
 include("resolu.php");
 
 
 ?>
-
+<style>
+.head a{
+    color:darkblue;
+}
+</style>
 <body>
-    <div style="width: 100%; background-color:#025859">
-        <p class="head">
-            <a href="index.php" class="back">Go back</a>
-        </p>
-    </div>
+    
     <table width="100%" class="tabbb">
         <?php
 
@@ -166,16 +92,19 @@ include("resolu.php");
         ?>
 
     </table>
-    <hr style="color:black">
-    <div class="shead">
-        <p class="head1">Search results(<?php echo mysqli_num_rows($search) ?>)</p>
-        <br>
+    <hr><center><div class="sijdf">
+        <p class="head">
+            <a href="index.php" class="back">Go back</a>
+        </p>
+    </div></center>
+    <div class="shead"><center>
+        <p class="head1">Search results(<?php echo mysqli_num_rows($search) ?>)</p></center>
     </div>
-    <?php echo $nores; ?>
+    <?php echo $nores ?? ""; ?>
     <div style="overflow-x:auto;">
 
     <table class="doit" width="100%">
-        <?php echo $th;  ?>
+        <?php echo $th ?? "";  ?>
         <?php while ($getdata3 = mysqli_fetch_array($search)) { ?>
 
             <tr class="result">
@@ -253,22 +182,22 @@ include("resolu.php");
 
     if ($search and mysqli_num_rows($search) < 1) {
 
-    ?><center>
+    ?><center >
             <p class="nn">We did not find any result with parameters:<br>
-                <?php if ($_SESSION['sech'] != "") { ?>
-                    <?php echo $_SESSION['rch']; ?>:<?php echo " "; ?><b>'<?php echo $_SESSION['sech'] ?>'</b><br><?php } ?>
-                Faculty:<br><b><?php echo $_SESSION['ff']; ?></b><br>Department:<br><b> <?php echo $_SESSION['dd']; ?></b><br> <?php
+                
+                    <?php echo $_SESSION['rch'] ?? ""; ?>:<?php echo " "; ?><b>'<?php echo $_SESSION['sech'] ?? "" ?>'</b><br><?php } ?>
+                Faculty:<br><b><?php echo $_SESSION['ff'] ?? ''; ?></b><br>Department:<br><b> <?php echo $_SESSION['dd'] ?? ""; ?></b><br> <?php
 
-                                                                                                                                if ($_SESSION['yy'] != "") {
+                                                                                                                                if (isset($_SESSION['yy'])) {
                                                                                                                                     echo "published ";
-                                                                                                                                    echo "<b>" . $_SESSION['yy'] . "</b> <br>";
+                                                                                                                                    echo "<b>" . ($_SESSION['yy'] ?? "") . "</b> <br>";
                                                                                                                                 } else
                                                                                                                                     echo ""; ?>
 
 
 
 
-                in our database.</p>
+                </p>
         </center>
 
 
@@ -278,7 +207,7 @@ include("resolu.php");
     <?php
 
 
-    }
+ 
 
 
     ?>
@@ -302,7 +231,7 @@ include("resolu.php");
     <?php if (isset($_SESSION['admin'])) {
     } else { ?>
         <center>
-            <p class="nm" style="color: red;"> <?php echo $suerr  ?>
+            <p class="nm" style="color: red;"> <?php echo $suerr ?? ""  ?>
             </p>
             <form method="POST">
                 <p class="nm">You can<br><button type="submit" name="sugg" value="sug" class="sugg">Request an addition</button><br>to the library.</p>

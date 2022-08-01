@@ -25,7 +25,7 @@ $rqid=$_GET["rqid"];
 
 $goc=mysqli_query($connection,"select * from lib.requests where requestid='$rqid'");
 $gt=mysqli_fetch_assoc($goc);
-if($_POST["appro"]!=""){
+if(isset($_POST["appro"])){
 
 
 $admin=$_SESSION['admin'];
@@ -41,9 +41,9 @@ $approve=mysqli_query($connection,"update lib.requests set approval_status='issu
 if($approve==1){
 
 
-$mesg="Issued successfully.";
+$mesg="<span style='color:green'>Issued successfully.</span>";
 
-}else{$mesg="failed to register issue, please contact programmer";}
+}else{$mesg="<span style='color:red'>failed to register issue, please contact programmer</span>";}
 
 
 
@@ -53,6 +53,8 @@ $mesg="Issued successfully.";
 
 
 
+$goc=mysqli_query($connection,"select * from lib.requests where requestid='$rqid'");
+$gt=mysqli_fetch_assoc($goc);
 
 
 
@@ -76,6 +78,16 @@ include("resolu.php");
 
 ?>
 
+<style>
+
+
+/* Link */
+.erreerr center a{
+ color:blue;
+}
+
+
+</style>
 <body>
     
 
@@ -87,15 +99,13 @@ include("header.php");
 ?>
 
 </table>  
-<hr style="color:black" >
-<div style="background-image: url('<?php  echo $stories[$dis]  ?>');
-    background-size: cover;">
+<hr>
+<div class="ssaf">
 <div class="alr">
- 
- <div style="border: 1px solid ; background-color: rgba(255, 255, 255, 0.7);">    <br>      <br>  
-  <center>  <a href="<?php if($_SESSION["jskd"]=="yo"){ echo "viewusers.php";}else{ echo "viewreq.php";}?>">GO BACK</a></center>
+<div class="erreerr">    <br>      <br>  
+  <center>  <a href="<?php if(isset($_SESSION["jskd"])){if($_SESSION["jskd"]=="yo"){ echo "viewusers.php";}else{ echo "viewreq.php";}}else{ echo "viewreq.php";}?>">GO BACK</a></center>
 <div class="alrt">
-    <p><b><?php echo $mesg ?></b></p><br>
+    <p><b><?php echo $mesg ?? "" ?></b></p><br>
 <p>You are about to Issue 
 <u><?php
 $l=$gt['bookid'];

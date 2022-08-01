@@ -1,4 +1,4 @@
 <?php
-$conn = mysqli_connect('localhost', 'root', 'mysql', 'lib');
-$connection = mysqli_connect("localhost", "root", "mysql", "lib");
+$conn = mysqli_connect('localhost', 'root', '', 'lib');
+$connection = mysqli_connect("localhost", "root", "", "lib");
 ?>

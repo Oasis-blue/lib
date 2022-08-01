@@ -32,8 +32,13 @@ include("resolu.php");
 
 
 ?>
+<style>
+/* Division */
 
 
+
+
+</style>
 <body>
    
 <table width="100%">
@@ -44,13 +49,13 @@ include("header.php");
 ?>
 
 </table>  
-<hr style="color:black" >
+<hr>
 
 <br>
 <div class="colo">
 <br>
 <center>
-<a href="index.php" style="color: white;">GO TO HOMEPAGE</a>
+<a href="index.php">GO TO HOMEPAGE</a>
 </center>
 <br> </div>
 <br>

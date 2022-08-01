@@ -1,5 +1,75 @@
 <style>
+@media (max-width:640px){
 
+/* Onepic */
+.slideshow-container .mySlides .onepic{
+ width:467px;
+}
+
+/* Twopic */
+.slideshow-container .mySlides .twopic{
+ width:460px;
+}
+
+/* Threepic */
+.slideshow-container .mySlides .threepic{
+ width:315px;
+}
+
+/* Four */
+.slideshow-container .mySlides .four{
+ width:81%;
+}
+
+}
+
+@media (max-width:561px){
+
+/* Twopic */
+.slideshow-container .mySlides .twopic{
+ width:297px;
+}
+
+/* Onepic */
+.slideshow-container .mySlides .onepic{
+ width:279px;
+}
+
+/* Threepic */
+.slideshow-container .mySlides .threepic{
+ width:227px;
+}
+
+/* Four */
+.slideshow-container .mySlides .four{
+ width:350px;
+}
+
+}
+
+@media (max-width:372px){
+
+/* Threepic */
+.slideshow-container .mySlides .threepic{
+ width:145px;
+}
+
+/* Four */
+.slideshow-container .mySlides .four{
+ width:237px;
+}
+
+/* Twopic */
+.slideshow-container .mySlides .twopic{
+ width:215px;
+}
+
+/* Onepic */
+.slideshow-container .mySlides .onepic{
+ width:210px;
+}
+
+}
 
 @media (max-width:614px){
 

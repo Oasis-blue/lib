@@ -13,7 +13,7 @@ include("exfix.php");
 include("checkses.php");
 
 include("connection.php");
-if($_POST["look"]!=""){
+if(isset($_POST["look"])){
 $reqid=$_POST["lookret"];
 $checkreq=mysqli_query($connection,"select * from lib.requests where requestid='$reqid'");
 
@@ -77,7 +77,15 @@ include("resolu.php");
 
 
 ?>
+<style>/* Table */
 
+/* Link */
+center a{
+ color:blue;
+}
+
+
+</style>
 <body>
     
 
@@ -89,11 +97,11 @@ include("header.php");
 ?>
 
 </table>  
-<hr style="color:black" >
+<hr>
 
 <center>  <a href="index.php">GO HOME</a></center>
 <div class="sses">
-<?php echo '<p style="color:red">'.$errmgg."</p>"  ?>
+<?php echo '<p style="color:red">'.($errmgg ?? "")."</p>"  ?>
 <p>Enter Request ID or User ID to make a return.</p>
 <form method="POST">
 
